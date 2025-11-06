@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KalkulatorController;
 
-// Your final routes
 Route::get('/', [KalkulatorController::class, 'dashboard']);
 Route::get('/dashboard', [KalkulatorController::class, 'dashboard'])->name('dashboard');
 Route::post('/calculate', [KalkulatorController::class, 'calculate'])->name('calculate');

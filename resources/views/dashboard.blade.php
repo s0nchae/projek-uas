@@ -1,6 +1,7 @@
 @extends('layout.app')
 
-@section ('content')
+@section('content')
+
 <div class="content" style="height: 850px">
     <div class="container" style="max-width: 1850px">
       <div class="container-fluid">
@@ -29,44 +30,143 @@
     </div>
   </div>
 
+  {{-- KALKULATOR SECTION --}}
+  <div class="content" id="Kalkulator">
+    <div class="container" style="max-width: 1850px">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 style="font-family: poppins; font-size: 36px; padding-top: 100px; color: #1E3A8A"><strong>Kalkulator Pengeluaran Rokok</strong></h1>
+          </div>
+          
+          {{-- KALKULATOR (FORM) --}}
+          <div class="col-sm-6 mt-4">
+            <div class="card p-3 h-100">
+              <div class="card-body">
+                <form action="{{ route('calculate') }}" method="POST">
+                  @csrf
+                  <p style="font-family: poppins; font-size: 22px; color: #FF475A">Jumlah bungkus rokok per hari</p>
+                  <div class="mb-3">
+                    <input type="number" name="bungkus_per_hari" class="form-control" value="{{ old('bungkus_per_hari') }}" required min="1" placeholder="Contoh: 2">
+                  </div>
+                  <p style="font-family: poppins; font-size: 22px; color: #FF475A">Harga satu bungkus merk rokok</p>
+                  <div class="mb-3">
+                    <input type="number" name="harga_per_bungkus" class="form-control" value="{{ old('harga_per_bungkus') }}" required min="1000" placeholder="Contoh: 30000">
+                  </div>
+                  <p style="font-family: poppins; font-size: 22px; color: #FF475A">Sudah merokok selama (bulan)</p>
+                  <div class="mb-3">
+                    <input type="number" name="lama_bulan_merokok" class="form-control" value="{{ old('lama_bulan_merokok') }}" required min="1" placeholder="Contoh: 12">
+                  </div>
+                  <button type="submit" class="btn btn-outline-primary mt-3" style="border-radius: 20px">Hitung</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          {{-- (HASIL) --}}
+          <div class="col-sm-6 mt-4">
+            <div class="card p-4 h-100" style="background-color: #FF475A">
+              <div class="card-body d-flex flex-column">
+                <p style="font-family: poppins; font-size: 22px; color: white">Pengeluaran rokok per hari</p>
+                <p style="font-family: poppins; font-size: 22px; color: white"><strong>
+                  @if(session('calculation_result'))
+                    Rp {{ number_format(session('calculation_result')['total_per_hari'], 0, ',', '.') }},-
+                  @else
+                    Rp0,-
+                  @endif
+                </strong></p>
+                
+                <p style="font-family: poppins; font-size: 22px; color: white">Uang yang bisa disimpan dalam 5 tahun:</p>
+                <p style="font-family: poppins; font-size: 22px; color: white"><strong>
+                  @if(session('calculation_result'))
+                    @php
+                      $total_per_bulan = session('calculation_result')['total_per_bulan'];
+                      $uang_5_tahun = $total_per_bulan * 12 * 5;
+                    @endphp
+                    Rp {{ number_format($uang_5_tahun, 0, ',', '.') }},-
+                  @else
+                    Rp0,-
+                  @endif
+                </strong></p>
+                
+                <p style="font-family: poppins; font-size: 22px; color: white">Manfaat berhenti merokok:</p>
+                
+                {{-- MANFAAT KESEHATAN --}}
+                <div style="font-family: poppins; font-size: 18px; color: white">
+                  <p><strong>Kesehatanmu akan membaik:</strong></p>
+                  <ul style="padding-left: 20px">
+                    <li>Paru-paru mulai bersih dalam 2-12 minggu</li>
+                    <li>Risiko serangan jantung turun 50% dalam 1 tahun</li>
+                    <li>Sirkulasi darah membaik dalam 2-12 minggu</li>
+                    <li>Indra perasa dan penciuman lebih tajam dalam 48 jam</li>
+                  </ul>
+                  
+                  <p><strong>Hidup lebih berkualitas!</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- TABEL RIWAYAT --}}
   <div class="content">
     <div class="container" style="max-width: 1850px">
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-12">
-            <h1 style="font-family: poppins; font-size: 36px; padding-top: 100px; color: #1E3A8A" id="Kalkulator"><strong>Kalkulator Pengeluaran Rokok</strong></h1>
+            <h1 style="font-family: poppins; font-size: 36px; padding-top: 100px; color: #1E3A8A">
+              <strong>Riwayat Perhitungan</strong>
+            </h1>
           </div>
-          <div class="col-sm-6 mt-4">
-            <div class="card p-3">
+          <div class="col-sm-12 mt-4">
+            <div class="card p-4">
               <div class="card-body">
-                <form>
-                  <p style="font-family: poppins; font-size: 22px; color: #FF475A" id="Kalkulator">Jumlah bungkus rokok per hari</p>
-                  <div class="mb-3">
-                    <input type="email" class="form-control" id="exampleInputEmail"></input>
-                  </div>
-                  <p style="font-family: poppins; font-size: 22px; color: #FF475A" id="Kalkulator">Harga satu bungkus merk rokok</p>
-                  <div class="mb-3">
-                    <input type="email" class="form-control" id="exampleInputEmail"></input>
-                  </div>
-                  <p style="font-family: poppins; font-size: 22px; color: #FF475A" id="Kalkulator">Sudah merokok selama (tahun)</p>
-                  <div class="mb-3">
-                    <input type="email" class="form-control" id="exampleInputEmail"></input>
-                  </div>
-                </form>
-                <a class="btn btn-outline-primary mt-3" style="border-radius: 20px" id="Kalkulator">Hitung</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6 mt-4">
-            <div class="card p-4" style="background-color: #FF475A">
-              <div class="card-body">
-                <p style="font-family: poppins; font-size: 22px; color: white" id="Kalkulator">Jumlah bungkus rokok per hari</p>
-                <p style="font-family: poppins; font-size: 22px; color: white" id="Kalkulator"><strong>Rp0,-</strong></p>
-                <p style="font-family: poppins; font-size: 22px; color: white" id="Kalkulator">Uang yang bisa disimpan dalam 5 tahun jika kamu berhenti merokok:</p>
-                <p style="font-family: poppins; font-size: 22px; color: white" id="Kalkulator"><strong>Rp0,-</strong></p>
-                <p style="font-family: poppins; font-size: 22px; color: white" id="Kalkulator">Manfaat kalau kamu <strong>berhenti sekarang:</strong></p>
-                <p style="font-family: poppins; font-size: 22px; color: white" id="Kalkulator">Paru-paru mulai membaik dalam 7 minggu. Risiko serangan jantung menurun 50% dalam 1 tahun.</p>
+                @if(isset($kalkulators) && $kalkulators->count() > 0)
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Bungkus/Hari</th>
+                        <th>Harga/Bungkus</th>
+                        <th>Lama (Bulan)</th>
+                        <th>Total/Hari</th>
+                        <th>Total/Bulan</th>
+                        <th>Total</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($kalkulators as $kalkulator)
+                      <tr>
+                        <td>{{ $kalkulator->bungkus_per_hari }}</td>
+                        <td>Rp {{ number_format($kalkulator->harga_per_bungkus, 0, ',', '.') }}</td>
+                        <td>{{ $kalkulator->lama_bulan_merokok }}</td>
+                        <td>Rp {{ number_format($kalkulator->total_per_hari, 0, ',', '.') }}</td>
+                        <td>Rp {{ number_format($kalkulator->total_per_bulan, 0, ',', '.') }}</td>
+                        <td>Rp {{ number_format($kalkulator->total_uang, 0, ',', '.') }}</td>
+                        <td>
+                          <form action="{{ route('clear-history', $kalkulator->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                          </form>
+                        </td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                  
+                  {{-- HASIL TOTAL --}}
+                  @if($totalUang > 0)
+                    <div class="mt-3 p-3" style="background: #fff3cd; border-radius: 4px;">
+                      <strong>Total Keseluruhan Pengeluaran: Rp {{ number_format($totalUang, 0, ',', '.') }}</strong>
+                    </div>
+                  @endif
+                @else
+                  <p class="text-muted">Belum ada riwayat perhitungan.</p>
+                @endif
               </div>
             </div>
           </div>
@@ -82,20 +182,19 @@
       </div>
     </div>
   </div>
-</div>
 
-<div class="content">
+  <div class="content">
     <div class="container" style="max-width: 1850px">
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-12">
-            <h1 style="font-family: poppins; font-size: 36px; padding-top: 100px; color: #1E3A8A"" id="Kalkulator"><strong>Tier-list menurut kamu!</strong></h1>
+            <h1 style="font-family: poppins; font-size: 36px; padding-top: 100px; color: #1E3A8A"><strong>Tier-list menurut kamu!</strong></h1>
           </div>
           <div class="col-sm-12 mt-4">
             <div class="card p-4">
               <div class="card-body col-sm-6">
-                <p style="font-family: poppins; font-size: 22px; color: #FF475A" id="Kalkulator">Kamu merokok karena apa?</p>
-                  <div class="card-body">
+                <p style="font-family: poppins; font-size: 22px; color: #FF475A">Kamu merokok karena apa?</p>
+                <div class="card-body">
                   <!-- the events -->
                   <div id="external-events">
                     <div class="external-event bg-success">Lunch</div>
