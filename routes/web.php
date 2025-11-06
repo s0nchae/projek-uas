@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TierListController;
 use App\Http\Controllers\KalkulatorController;
 
 Route::get('/', [KalkulatorController::class, 'dashboard']);
@@ -19,9 +20,13 @@ Route::get('/login', function () {
 
 Route::post('/login', [AuthController::class, 'proseslogin']);
 
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
-Route::post('register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'register']);
+
+
+
+Route::post('/tierlist/store', [TierListController::class, 'store'])->name('tierlist.store');
+
 
 // Route::get('/register', function () {
 //     return view('register');

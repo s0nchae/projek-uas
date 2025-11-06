@@ -12,7 +12,7 @@
             <p style="font-family: poppins; color: #FF475A"> Website ini membantu kamu memahami bahaya rokok serta menghitung <br> berapa banyak uang yang sebenarnya bisa kamu hemat jika berhenti merokok. </p>
             <br>
             <a class="btn btn-outline-primary mr-3" style="border-radius: 20px; font-family: poppins" href="#Kalkulator">Mulai&nbsp;hitung&nbsp;sekarang!</a>
-            
+
           </div>
           <div class="col-sm-5">
             <img width="400px" style="margin-top: 180px; margin-left: 300px" src="https://static.vecteezy.com/system/resources/previews/005/102/073/non_2x/hand-drawn-illustration-smoking-with-watercolor-background-free-vector.jpg">
@@ -38,7 +38,7 @@
           <div class="col-sm-12">
             <h1 style="font-family: poppins; font-size: 36px; padding-top: 100px; color: #1E3A8A"><strong>Kalkulator Pengeluaran Rokok</strong></h1>
           </div>
-          
+
           {{-- KALKULATOR (FORM) --}}
           <div class="col-sm-6 mt-4">
             <div class="card p-3 h-100">
@@ -75,7 +75,7 @@
                     Rp0,-
                   @endif
                 </strong></p>
-                
+
                 <p style="font-family: poppins; font-size: 22px; color: white">Uang yang bisa disimpan dalam 5 tahun:</p>
                 <p style="font-family: poppins; font-size: 22px; color: white"><strong>
                   @if(session('calculation_result'))
@@ -88,9 +88,9 @@
                     Rp0,-
                   @endif
                 </strong></p>
-                
+
                 <p style="font-family: poppins; font-size: 22px; color: white">Manfaat berhenti merokok:</p>
-                
+
                 {{-- MANFAAT KESEHATAN --}}
                 <div style="font-family: poppins; font-size: 18px; color: white">
                   <p><strong>Kesehatanmu akan membaik:</strong></p>
@@ -100,7 +100,7 @@
                     <li>Sirkulasi darah membaik dalam 2-12 minggu</li>
                     <li>Indra perasa dan penciuman lebih tajam dalam 48 jam</li>
                   </ul>
-                  
+
                   <p><strong>Hidup lebih berkualitas!</strong></p>
                 </div>
               </div>
@@ -157,7 +157,7 @@
                       @endforeach
                     </tbody>
                   </table>
-                  
+
                   {{-- HASIL TOTAL --}}
                   @if($totalUang > 0)
                     <div class="mt-3 p-3" style="background: #fff3cd; border-radius: 4px;">
@@ -175,38 +175,121 @@
     </div>
   </div>
 
-  <div class="content" style="background-color: #FF475A; margin-top: 100px">
+ <div class="content" style="background-color: #FF475A; margin-top: 100px">
     <div class="container" style="max-width: 1850px">
       <div class="container-fluid">
-        <h2 class="py-5 mr-md-auto font-weight-medium" style="font-family: poppins; color: white; text-align: center"><strong>Rata-rata penyebab orang merokok adalah _. <br> Namun kata mereka setelah berhasil berhenti merokok, mereka merasakan _</strong></h2>
-      </div>
+        <h2 class="py-5 mr-md-auto font-weight-medium" style="font-family: poppins; color: white; text-align: center">
+            <strong>
+             Rata-rata penyebab orang merokok adalah
+             <span style="color: #FFD700">{{ $topS ?? 'belum ada data' }}</span>. <br>
+             Namun kata mereka setelah berhasil berhenti merokok, mereka merasakan
+             <span style="color: #FFD700">{{ $topDampak ?? 'belum ada data' }}</span>.
+            </strong>
+        </h2>
     </div>
   </div>
+</div>
 
-  <div class="content">
-    <div class="container" style="max-width: 1850px">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-12">
-            <h1 style="font-family: poppins; font-size: 36px; padding-top: 100px; color: #1E3A8A"><strong>Tier-list menurut kamu!</strong></h1>
-          </div>
-          <div class="col-sm-12 mt-4">
-            <div class="card p-4">
-              <div class="card-body col-sm-6">
-                <p style="font-family: poppins; font-size: 22px; color: #FF475A">Kamu merokok karena apa?</p>
-                <div class="card-body">
-                  <!-- the events -->
-                  <div id="external-events">
-                    <div class="external-event bg-success">Lunch</div>
-                    <div class="external-event bg-warning">Go home</div>
-                    <div class="external-event bg-info">Do homework</div>
-                    <div class="external-event bg-primary">Work on UI design</div>
-                    <div class="external-event bg-danger">Sleep tight</div>
+<div class="content">
+  <div class="container" style="max-width: 1850px">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 style="font-family: poppins; font-size: 36px; padding-top: 100px; color: #1E3A8A">
+            <strong>Tier-list menurut kamu!</strong>
+          </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card p-4 h-100">
+            <div class="card-body">
+              <p style="font-family: poppins; font-size: 22px; color: #FF475A;">Kamu merokok karena apa?</p>
+
+              <div id="cards-merokok" class="mb-3">
+                <div class="row justify-content-between text-center">
+                  <div class="col card p-2 m-1 tier-box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                     <div class="item-label"> S</div>
+                  </div>
+                   <div class="col card p-2 m-1 tier-box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                     <div class="item-label"> A</div>
+                  </div>
+                   <div class="col card p-2 m-1 tier-box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                     <div class="item-label"> B</div>
+                  </div>
+                   <div class="col card p-2 m-1 tier-box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                     <div class="item-label"> C</div>
                   </div>
                 </div>
               </div>
+
+              <div id="list-merokok" class="d-flex flex-wrap gap-2 justify-content-start">
+                <div class="card p-2 item" draggable="true" ondragstart="drag(event)" id="item1">Teman</div>
+                <div class="card p-2 item" draggable="true" ondragstart="drag(event)" id="item2">Keluarga</div>
+                <div class="card p-2 item" draggable="true" ondragstart="drag(event)" id="item3">Lingkungan</div>
+                <div class="card p-2 item" draggable="true" ondragstart="drag(event)" id="item4">Penasaran</div>
+                <div class="card p-2 item" draggable="true" ondragstart="drag(event)" id="item5">Dibully</div>
+                <div class="card p-2 item" draggable="true" ondragstart="drag(event)" id="item6">Stres</div>
+                <div class="card p-2 item" draggable="true" ondragstart="drag(event)" id="item7">Gaya</div>
+                <div class="card p-2 item" draggable="true" ondragstart="drag(event)" id="item8">Tertarik</div>
+              </div>
             </div>
           </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="card p-4 h-100">
+            <div class="card-body">
+              <p style="font-family: poppins; font-size: 22px; color: #FF475A;">Dampak sudah tidak merokok?</p>
+
+              <div id="cards-dampak" class="mb-3">
+                <div class="row justify-content-between text-center">
+                  <div class="col card p-2 m-1 tier-box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                     <div class="item-label"> S</div>
+                  </div>
+                   <div class="col card p-2 m-1 tier-box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                     <div class="item-label"> A</div>
+                  </div>
+                   <div class="col card p-2 m-1 tier-box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                     <div class="item-label"> B</div>
+                  </div>
+                   <div class="col card p-2 m-1 tier-box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                     <div class="item-label"> C</div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="list-dampak" class="d-flex flex-wrap gap-2 justify-content-start">
+                <div class="card p-2 item" draggable="true" ondragstart="drag(event)" id="item9">Nafas lebih lancar</div>
+                <div class="card p-2 item" draggable="true" ondragstart="drag(event)" id="item10">Detak jantung stabil</div>
+                <div class="card p-2 item" draggable="true" ondragstart="drag(event)" id="item11">Indra perasa membaik</div>
+                <div class="card p-2 item" draggable="true" ondragstart="drag(event)" id="item12">Batuk berkurang</div>
+                <div class="card p-2 item" draggable="true" ondragstart="drag(event)" id="item13">Tekanan darah menurun</div>
+                <div class="card p-2 item" draggable="true" ondragstart="drag(event)" id="item14">Merasa lebih segar</div>
+                <div class="card p-2 item" draggable="true" ondragstart="drag(event)" id="item15">Tidak cepat capek</div>
+                <div class="card p-2 item" draggable="true" ondragstart="drag(event)" id="item16">Tidak ada</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+        <form id="tierForm" action="{{ route('tierlist.store') }}" method="POST">
+            @csrf
+            <input type="hidden" name="tier_merokok" id="tier_merokok">
+            <input type="hidden" name="tier_dampak" id="tier_dampak">
+            <button type="button" class="btn btn-outline-primary" style="border-radius: 20px" onclick="submitTierList()">
+            Simpan Tier List
+            </button>
+        </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
         </div>
       </div>
     </div>
