@@ -2,18 +2,23 @@
 
 @section('content')
 
-<div class="content" style="height: 850px">
+<div class="content" style="height: 650px; background-color: #FF485E;">
     <div class="container" style="max-width: 1850px">
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-7">
-            <h1 style="font-family: poppins; font-size: 60px; padding-top: 200px; color: #1E3A8A"><strong>Berhenti Merokok, <br> Selamatkan Diri dan <br> Dompetmu!</strong></h1>
+            <h1 style="font-family: poppins; font-size: 65px; padding-top: 100px; color: #ffffffff"><strong>Berhenti Merokok, <br> Selamatkan Diri dan <br> Dompetmu!</strong></h1>
             <br>
-            <p style="font-family: poppins; color: #FF475A"> Website ini membantu kamu memahami bahaya rokok serta menghitung <br> berapa banyak uang yang sebenarnya bisa kamu hemat jika berhenti merokok. </p>
+            <p style="font-family: poppins; font-size: 16px; color: #ffffffff"> Website ini membantu kamu memahami bahaya rokok serta menghitung <br> berapa banyak uang yang sebenarnya bisa kamu hemat jika berhenti merokok. </p>
             <br>
-            <a class="btn btn-outline-primary mr-3" style="border-radius: 20px; font-family: poppins" href="#Kalkulator">Mulai&nbsp;hitung&nbsp;sekarang!</a>
-
+            <!-- TOMBOL -->
+            <a href="#Kalkulator"
+              class="btn text-white mr-3"
+              style="background-color: #FF7586; border-radius: 20px; font-family: Poppins; font-size: 20px; padding: 15px 30px;">
+              Mulai&nbsp;hitung&nbsp;sekarang!
+            </a>
           </div>
+          <!-- GAMBAR ROKOK -->
           <div class="col-sm-5">
             <img width="400px" style="margin-top: 180px; margin-left: 300px" src="https://static.vecteezy.com/system/resources/previews/005/102/073/non_2x/hand-drawn-illustration-smoking-with-watercolor-background-free-vector.jpg">
           </div>
@@ -22,13 +27,64 @@
     </div>
   </div>
 
-  <div class="content" style="background-color: #FF475A">
-    <div class="container" style="max-width: 1850px">
-      <div class="container-fluid">
-        <h2 class="py-5 mr-md-auto font-weight-medium" style="font-family: poppins; color: white; text-align: center"><i>"Hidupmu lebih berharga daripada sebatang rokok, <br> kamu lebih kuat dari kecanduanmu!"</i></h2>
+<!-- TEKS -->
+<div class="content">
+  <div class="container">
+    <h1 style="font-family: poppins; font-size: 36px; padding-top: 100px; color: #1E3A8A"><strong>Bahaya Merokok!</strong></h1>
+  </div>
+</div>
+
+ <div class="container my-4">
+  <div class="row">
+    <!-- SISI KIRI: VIDEO UTAMA -->
+    <div class="col-md-9 d-flex justify-content-center">
+      <div class="ratio ratio-16x9 rounded-4" style="overflow: hidden;">
+        <iframe 
+          src="https://www.youtube.com/embed/Ufz0tR3OTcQ"
+          title="Video Utama"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <!-- SISI KANAN: 3 VIDEO KECIL -->
+    <div class="col-md-3 d-flex flex-column justify-content-between">
+      <div class="ratio ratio-16x9 rounded-4" style="overflow: hidden;">
+        <iframe 
+          src="https://www.youtube.com/embed/ZiPCagQs7H0?start=1443"
+          title="Video Kecil 1"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="ratio ratio-16x9 rounded-4" style="overflow: hidden;">
+        <iframe 
+          src="https://www.youtube.com/embed/nS0dOCtXNVU?start=43"
+          title="Video Kecil 2"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="ratio ratio-16x9 rounded-4" style="overflow: hidden;">
+        <iframe 
+          src="https://www.youtube.com/embed/KKsc4TZ_F_s?start=5"
+          title="Video Kecil 3"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
   </div>
+</div>
+
+<!-- TEKS -->
+<div class="content" style="display: flex; justify-content: center; padding: 80px 20px;">
+  <div class="container" style="text-align: center;">
+    <h1 style="font-family: Poppins; font-size: 30px; color: #FF485E; margin-top: 80px">
+      “Hidupmu lebih berharga daripada sebatang rokok, <br>
+      kamu lebih kuat dari kecanduanmu!”
+    </h1>
+  </div>
+</div>
 
   {{-- KALKULATOR SECTION --}}
   <div class="content" id="Kalkulator">
