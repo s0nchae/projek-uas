@@ -2,25 +2,25 @@
 
 @section('content')
 
-<div class="content" style="height: 650px; background-color: #FF485E;">
-    <div class="container" style="max-width: 1850px">
+<div class="content" style="height: 100vh; background-color: #FF485E">
+    <div class="container">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm-7">
-            <h1 style="font-family: poppins; font-size: 65px; padding-top: 100px; color: #ffffffff"><strong>Berhenti Merokok, <br> Selamatkan Diri dan <br> Dompetmu!</strong></h1>
+          <div class="col-sm-7" style="display: flex; flex-direction: column; justify-content: center; align-items: left">
+            <h1 style="font-family: poppins; font-size: 65px; color: #ffffffff"><strong>Berhenti Merokok, <br> Selamatkan Diri dan <br> Dompetmu!</strong></h1>
             <br>
-            <p style="font-family: poppins; font-size: 16px; color: #ffffffff"> Website ini membantu kamu memahami bahaya rokok serta menghitung <br> berapa banyak uang yang sebenarnya bisa kamu hemat jika berhenti merokok. </p>
+            <p style="font-family: poppins; font-size: 18px; color: rgba(255, 255, 255, 0.87)"> Website ini membantu kamu memahami bahaya rokok serta menghitung berapa banyak uang yang sebenarnya bisa kamu hemat jika berhenti merokok. </p>
             <br>
             <!-- TOMBOL -->
             <a href="#Kalkulator"
               class="btn text-white mr-3"
-              style="background-color: #FF7586; border-radius: 20px; font-family: Poppins; font-size: 20px; padding: 15px 30px;">
+              style="background-color: none; border: 2px solid white; border-radius: 20px; font-family: Poppins; font-size: 20px; padding: 15px 30px; max-width: 300px">
               Mulai&nbsp;hitung&nbsp;sekarang!
             </a>
           </div>
           <!-- GAMBAR ROKOK -->
-          <div class="col-sm-5">
-            <img width="400px" style="margin-top: 180px; margin-left: 300px" src="https://static.vecteezy.com/system/resources/previews/005/102/073/non_2x/hand-drawn-illustration-smoking-with-watercolor-background-free-vector.jpg">
+          <div class="col-sm-5" style="display: flex; justify-content: right; align-items: center; height: 100vh">
+            <img width="500px" src="{{asset('assets/smokedhand.png')}}" alt="Gambar Tangan Perokok" style="filter: drop-shadow(0px 10px 15px rgba(255, 184, 184, 0.4));">
           </div>
         </div>
         </div>
@@ -40,7 +40,7 @@
     <div class="col-md-9 d-flex justify-content-center">
       <div class="ratio ratio-16x9 rounded-4" style="overflow: hidden;">
         <iframe 
-          src="https://www.youtube.com/embed/Ufz0tR3OTcQ"
+          src="https://www.youtube.com/embed/DB9n7aNM6q0?si=J53nh7e63ubRJCjb&amp;autoplay=1&amp;mute=1"
           title="Video Utama"
           allowfullscreen>
         </iframe>
@@ -51,7 +51,7 @@
     <div class="col-md-3 d-flex flex-column justify-content-between">
       <div class="ratio ratio-16x9 rounded-4" style="overflow: hidden;">
         <iframe 
-          src="https://www.youtube.com/embed/ZiPCagQs7H0?start=1443"
+          src="https://www.youtube.com/embed/5ihH4WExkEU?si=e6w555guscGBBwye"
           title="Video Kecil 1"
           allowfullscreen>
         </iframe>
@@ -59,7 +59,7 @@
 
       <div class="ratio ratio-16x9 rounded-4" style="overflow: hidden;">
         <iframe 
-          src="https://www.youtube.com/embed/nS0dOCtXNVU?start=43"
+          src="https://www.youtube.com/embed/EJe6h7xJxJM?si=etyUe8XRl_naUCWJ"
           title="Video Kecil 2"
           allowfullscreen>
         </iframe>
@@ -67,7 +67,7 @@
 
       <div class="ratio ratio-16x9 rounded-4" style="overflow: hidden;">
         <iframe 
-          src="https://www.youtube.com/embed/KKsc4TZ_F_s?start=5"
+          src="https://www.youtube.com/embed/96ZPwmtjpJQ?si=I7Bya6wa8XQTLLqb"
           title="Video Kecil 3"
           allowfullscreen>
         </iframe>
@@ -88,7 +88,7 @@
 
   {{-- KALKULATOR SECTION --}}
   <div class="content" id="Kalkulator">
-    <div class="container" style="max-width: 1850px">
+    <div class="container">
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-12">
@@ -169,7 +169,7 @@
 
   {{-- TABEL RIWAYAT --}}
   <div class="content">
-    <div class="container" style="max-width: 1850px">
+    <div class="container">
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-12">
@@ -247,7 +247,7 @@
 </div>
 
 <div class="content">
-  <div class="container" style="max-width: 1850px">
+  <div class="container">
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12">
