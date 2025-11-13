@@ -10,9 +10,19 @@
         <a class="p-2" style="text-decoration: none; font-family: poppins; color: #FF475A" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" href="#">Edukasi</a>
         </nav>
       </div>
-      <a class="btn btn-outline-primary mr-3" style="border-radius: 20px; font-family: poppins" href="#">Login&nbsp;now</a>
-      <a class="btn btn-outline-primary" style="border-radius: 20px; font-family: poppins" href="#">Try&nbsp;Premium&nbsp;Free</a>
-    </div>
+        <a class="btn text-white mr-3"
+        style="background-color: #FF475A; border-radius: 15px; font-family: Poppins; font-size: 16px; padding: 10px 22px;"
+        href="#">
+        Login&nbsp;now
+      </a>
+
+      <a class="btn text-white"
+        style="background-color: #FF475A; border-radius: 15px; font-family: Poppins; font-size: 16px; padding: 10px 22px;"
+        href="#">
+        Try&nbsp;Premium&nbsp;Free
+      </a>
+      </div>
+
   </div>
     <!-- Left navbar links -->
 
