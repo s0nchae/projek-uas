@@ -39,7 +39,7 @@
     <!-- SISI KIRI: VIDEO UTAMA -->
     <div class="col-md-9 d-flex justify-content-center">
       <div class="ratio ratio-16x9 rounded-4" style="overflow: hidden;">
-        <iframe 
+        <iframe
           src="https://www.youtube.com/embed/DB9n7aNM6q0?si=J53nh7e63ubRJCjb&amp;autoplay=1&amp;mute=1"
           title="Video Utama"
           allowfullscreen>
@@ -50,7 +50,7 @@
     <!-- SISI KANAN: 3 VIDEO KECIL -->
     <div class="col-md-3 d-flex flex-column justify-content-between">
       <div class="ratio ratio-16x9 rounded-4" style="overflow: hidden;">
-        <iframe 
+        <iframe
           src="https://www.youtube.com/embed/5ihH4WExkEU?si=e6w555guscGBBwye"
           title="Video Kecil 1"
           allowfullscreen>
@@ -58,7 +58,7 @@
       </div>
 
       <div class="ratio ratio-16x9 rounded-4" style="overflow: hidden;">
-        <iframe 
+        <iframe
           src="https://www.youtube.com/embed/EJe6h7xJxJM?si=etyUe8XRl_naUCWJ"
           title="Video Kecil 2"
           allowfullscreen>
@@ -66,7 +66,7 @@
       </div>
 
       <div class="ratio ratio-16x9 rounded-4" style="overflow: hidden;">
-        <iframe 
+        <iframe
           src="https://www.youtube.com/embed/96ZPwmtjpJQ?si=I7Bya6wa8XQTLLqb"
           title="Video Kecil 3"
           allowfullscreen>
@@ -87,7 +87,7 @@
 </div>
 
   {{-- KALKULATOR SECTION --}}
-  <div class="content" id="Kalkulator">
+  <div class="content" id= Kalkulator>
     <div class="container">
       <div class="container-fluid">
         <div class="row">
@@ -99,7 +99,7 @@
           <div class="col-sm-6 mt-4">
             <div class="card p-3 h-100">
               <div class="card-body">
-                <form action="{{ route('calculate') }}" method="POST">
+                <form action="{{ route('calculate') }}" method="POST" id="form">
                   @csrf
                   <p style="font-family: poppins; font-size: 22px; color: #FF475A">Jumlah bungkus rokok per hari</p>
                   <div class="mb-3">
@@ -113,7 +113,7 @@
                   <div class="mb-3">
                     <input type="number" name="lama_bulan_merokok" class="form-control" value="{{ old('lama_bulan_merokok') }}" required min="1" placeholder="Contoh: 12">
                   </div>
-                  <button type="submit" class="btn btn-outline-primary mt-3" style="border-radius: 20px">Hitung</button>
+                  <button type="submit" class="btn btn-outline-primary mt-3" style="border-radius: 20px" id="submit">Hitung</button>
                 </form>
               </div>
             </div>

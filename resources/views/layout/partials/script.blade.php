@@ -43,4 +43,43 @@ function submitTierList() {
   document.getElementById('tierForm').submit();
 }
 
+
+document.getElementById('form').addEventListener('submit', function() {
+    console.log("Menyimpan posisi scroll:", window.scrollY);
+    localStorage.setItem('scrollPosition', window.scrollY);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const savedPosition = localStorage.getItem('scrollPosition');
+    console.log("Posisi scroll yang diambil dari localStorage:", savedPosition);
+    if (savedPosition) {
+        window.scrollTo(0, savedPosition);
+    }
+});
+
+
+<script>
+function openKalkulator() {
+    // Tidak melakukan scroll apapun (agar aman)
+    // Jika ingin ke bawah, boleh mengaktifkan scroll manual
+    var el = document.getElementById("Kalkulator");
+    if (el) {
+        // Scroll manual, tidak meloncat
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+}
+
+// Mencegah scroll ke atas setelah submit form
+window.addEventListener('beforeunload', function() {
+    // simpan posisi scroll saat keluar
+    localStorage.setItem('scrollPos', window.scrollY);
+});
+
+window.addEventListener('load', function() {
+    // kembalikan scroll setelah reload Laravel
+    let pos = localStorage.getItem('scrollPos');
+    if (pos) window.scrollTo(0, pos);
+});
+</script>
+
 </script>

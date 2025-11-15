@@ -8,3 +8,26 @@
   <!-- Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
+  <style>
+
+      .nav-sidebar .nav-link.active {
+    background-color: #ffffff !important;
+    color: rgb(255, 97, 97) !important;
+}
+
+  .nav-sidebar .nav-link.active:hover{
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #d1172a !important;
+    color: white !important;
+}
+
+.main-sidebar {
+    background: rgb(253, 98, 98) !important;
+}
+
+.main-sidebar .brand-link{
+    color: #ffffff !important;
+}
+
+  </style>
+

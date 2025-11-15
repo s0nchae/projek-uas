@@ -29,7 +29,7 @@ class KalkulatorController extends Controller
         }
         arsort($countsMerokok);
         $topS = key($countsMerokok);
-        
+
         $countsDampak = [];
         foreach ($all as $item) {
             $data = json_decode($item->tier_dampak, true);
@@ -79,6 +79,7 @@ class KalkulatorController extends Controller
                 'total_uang' => $total_uang,
             ]
         ]);
+        
     }
 
     public function clearHistory($id)
