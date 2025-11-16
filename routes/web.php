@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TierListController;
 use App\Http\Controllers\KalkulatorController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', [KalkulatorController::class, 'dashboard']);
 Route::get('/dashboard', [KalkulatorController::class, 'dashboard'])->name('dashboard');
@@ -26,6 +27,9 @@ Route::post('/register', [AuthController::class, 'register']);
 
 
 Route::post('/tierlist/store', [TierListController::class, 'store'])->name('tierlist.store');
+
+
+Route::get('/admin', [AdminController::class, 'admin']);
 
 
 // Route::get('/register', function () {
