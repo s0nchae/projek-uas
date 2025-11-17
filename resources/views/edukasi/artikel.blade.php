@@ -65,7 +65,7 @@
                                     <div class="card">
                                         {{-- Link ke detail artikel menggunakan slug --}}
                                         <a href="{{ route('edukasi.show', $relatedArticle->slug) }}" style="text-decoration: none; color: inherit;">
-                                            <img src="{{ asset($relatedArticle->thumbnail_path) }}" class="card-img-top" alt="{{ $relatedArticle->judul }}">
+                                            <img src="{{ asset($relatedArticle->thumbnail_path) }}" class="card-img-top" alt="{{ $relatedArticle->judul }}" style="width: 100%; height: 30vh; object-fit: cover; object-position: center;">
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $relatedArticle->judul }}</h5>
                                                 {{-- Batasi deskripsi singkat agar rapi --}}

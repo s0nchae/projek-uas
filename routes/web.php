@@ -6,6 +6,8 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\TierListController;
 use App\Http\Controllers\KalkulatorController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\ArticleController as AdminArticleController;
+use App\Http\Controllers\Admin\CategoryController;
 
 Route::get('/', [KalkulatorController::class, 'dashboard']);
 Route::get('/dashboard', [KalkulatorController::class, 'dashboard'])->name('dashboard');
@@ -35,8 +37,15 @@ Route::get('/edukasi/artikel/{slug}', [ArticleController::class, 'show'])->name(
 Route::get('/edukasi/kategori/{slug}', [ArticleController::class, 'category'])->name('edukasi.category');
 
 
+// Rute untuk Admin
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', fn() => redirect()->route('admin.artikel.index'))->name('index');
+    Route::resource('artikel', AdminArticleController::class);
 
-Route::get('/admin', [AdminController::class, 'admin']);
+    // route untuk Ajax kategori
+    Route::post('category/store', [CategoryController::class, 'store'])->name('category.store');
+});
+
 
 
 // Route::get('/register', function () {

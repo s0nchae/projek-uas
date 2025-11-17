@@ -23,8 +23,8 @@
   
       <a class="btn text-white"
         style="background-color: #FF475A; border-radius: 15px; font-family: Poppins; font-size: 16px; padding: 10px 22px; cursor: pointer"
-        href="#">
-        Try&nbsp;Premium&nbsp;Free
+        href="/admin">
+        Admin&nbsp;Page
       </a>
     </div>
 

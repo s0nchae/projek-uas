@@ -16,8 +16,8 @@ return new class extends Migration
             // Kolom Konten Utama
             $table->string('judul', 255);
             $table->string('slug', 255)->unique(); // Untuk URL unik
-            $table->text('deskripsi_singkat')->nullable(); // Untuk META deskripsi / ringkasan
-            $table->string('konten'); // longtext untuk menampun isi artikel yang panjang (HTML)
+            $table->string('deskripsi_singkat')->nullable(); // Untuk META deskripsi / ringkasan
+            $table->text('konten'); // longtext untuk menampun isi artikel yang panjang (HTML)
             
             // Kolom Konten METADATA
             $table->string('author', 200);

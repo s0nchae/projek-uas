@@ -15,7 +15,7 @@
     <div class="container mt-5" style="font-family:poppins">
         <div class="row">
             <div class="col-sm-8">
-                <h3>📚 Artikel Edukasi</h3>
+                <h3>🧠 Bikin Kamu jadi Lebih Tau!</h3>
             </div>
             <div class="col-sm-4" style="display: flex; justify-content: end; align-items: center">
                 <li class="nav-item dropdown" style="list-style: none">
@@ -26,7 +26,7 @@
                         <li><a class="dropdown-item" href="{{ route('edukasi.index') }}">Semua Artikel</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{ route('edukasi.category', 'the-hidden-truth') }}">The Hidden Truth</a></li>
-                        <li><a class="dropdown-item" href="{{ route('edukasi.category', 'fakta-cepat') }}">Fakta Cepat</a></li>
+                        <li><a class="dropdown-item" href="{{ route('edukasi.category', 'the-unpopular-facts') }}">The Unpopular Facts</a></li>
                     </ul>
                 </li>
             </div>
