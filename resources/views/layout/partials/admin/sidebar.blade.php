@@ -23,5 +23,15 @@
           </li>
         </ul>
       </nav>
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column">
+          <li class="nav-item">
+            <a href="/admin/videos" class="nav-link active">
+              <i class="nav-icon fas fa-camera"></i>
+              <p>Video</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
 </aside>
