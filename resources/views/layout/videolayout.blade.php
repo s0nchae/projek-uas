@@ -20,7 +20,7 @@
     @include('layout.partials.admin.navbar')
 
     {{-- Sidebar --}}
-    @include('layout.partials.admin.sidebarvideo')
+    @include('layout.partials.admin.sidebar')
 
     {{-- Konten --}}
     <main style="flex: 1; padding: 20px;">

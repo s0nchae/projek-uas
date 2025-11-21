@@ -28,64 +28,63 @@
   </div>
 
 <!-- TEKS -->
+@php
+if (!function_exists('extractYouTubeId')) {
+   function extractYouTubeId($url) {
+       preg_match(
+           '/(youtu\.be\/|youtube\.com\/(watch\?v=|embed\/|shorts\/))([^\&\?\/]+)/',
+           $url,
+           $matches
+       );
+       return $matches[3] ?? null;
+   }
+}
+@endphp
 <div class="content">
   <div class="container">
     <h1 style="font-family: poppins; font-size: 36px; padding-top: 100px; color: #1E3A8A"><strong>Bahaya Merokok!</strong></h1>
-  </div>
-</div>
-
- @php
-if (!function_exists('extractYouTubeId')) {
-    function extractYouTubeId($url) {
-        preg_match(
-            '/(youtu\.be\/|youtube\.com\/(watch\?v=|embed\/|shorts\/))([^\&\?\/]+)/',
-            $url,
-            $matches
-        );
-        return $matches[3] ?? null;
-    }
-}
-@endphp
-
-<div class="container" style="max-width: 1000px;">
-  <div class="row g-3 my-3">
-    <!-- Main video -->
-    <div class="col-lg-8">
-      @if($mainVideo)
-        @php $mainId = extractYouTubeId($mainVideo->youtube_link); @endphp
-        <div class="main-video-wrapper rounded-4 overflow-hidden shadow-sm">
-          <iframe 
-            src="https://www.youtube.com/embed/{{ $mainId }}?autoplay=1&mute=1"
-            title="{{ $mainVideo->title ?? 'Video Utama' }}"
-            allowfullscreen
-            loading="lazy">
-          </iframe>
-        </div>
-      @else
-        <div class="bg-secondary rounded-4 main-video-wrapper d-flex align-items-center justify-content-center">
-          <p class="text-white">Video utama tidak dapat ditemukan.</p>
-        </div>
-      @endif
-    </div>
-
-    <!-- Sidebar videos -->
-    <div class="col-lg-4">
-      <div class="d-flex flex-column gap-3">
-        @foreach($otherVideos as $video)
-          @php $id = extractYouTubeId($video->youtube_link); @endphp
-          <div class="small-video-wrapper rounded-3 overflow-hidden shadow-sm">
+    <div class="row g-3 my-3">
+      <!-- Main video -->
+      <div class="col-lg-8">
+        @if($mainVideo)
+          @php $mainId = extractYouTubeId($mainVideo->youtube_link); @endphp
+          <div class="main-video-wrapper rounded-4 overflow-hidden shadow-sm">
             <iframe 
-              src="https://www.youtube.com/embed/{{ $id }}?modestbranding=1"
-              title="{{ $video->title ?? 'Video' }}"
+              src="https://www.youtube.com/embed/{{ $mainId }}?autoplay=1&mute=1"
+              title="{{ $mainVideo->title ?? 'Video Utama' }}"
               allowfullscreen
               loading="lazy">
             </iframe>
           </div>
-        @endforeach
+        @else
+          <div class="bg-secondary rounded-4 main-video-wrapper d-flex align-items-center justify-content-center">
+            <p class="text-white">Video utama tidak dapat ditemukan.</p>
+          </div>
+        @endif
+      </div>
+    
+      <!-- Sidebar videos -->
+      <div class="col-lg-4">
+        <div class="d-flex flex-column gap-3">
+          @foreach($otherVideos as $video)
+            @php $id = extractYouTubeId($video->youtube_link); @endphp
+            <div class="small-video-wrapper rounded-3 overflow-hidden shadow-sm">
+              <iframe 
+                src="https://www.youtube.com/embed/{{ $id }}?modestbranding=1"
+                title="{{ $video->title ?? 'Video' }}"
+                allowfullscreen
+                loading="lazy">
+              </iframe>
+            </div>
+          @endforeach
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
 
 <style>
   /* Main video container */

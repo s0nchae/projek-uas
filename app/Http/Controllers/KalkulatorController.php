@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kalkulator;
 use App\Models\TierList;
+use App\Models\video;
 use Illuminate\Http\Request;
 
 class KalkulatorController extends Controller
@@ -17,6 +18,11 @@ class KalkulatorController extends Controller
         $totalUang = $kalkulators->sum('total_uang');
 
         $all = TierList::all();
+
+        // ======== FIX VIDEO ========
+        $mainVideo = Video::first();
+        $otherVideos = Video::skip(1)->take(10)->get();
+        // ============================
 
         $countsMerokok = [];
         foreach ($all as $item) {
@@ -42,7 +48,7 @@ class KalkulatorController extends Controller
         arsort($countsDampak);
         $topDampak = key($countsDampak);
 
-        return view('dashboard', compact('kalkulators', 'totalUang', 'topS', 'topDampak'));
+        return view('dashboard', compact('kalkulators', 'totalUang', 'topS', 'topDampak', 'mainVideo', 'otherVideos'));
     }
 
     public function calculate(Request $request)
