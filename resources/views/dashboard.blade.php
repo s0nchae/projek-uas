@@ -34,47 +34,130 @@
   </div>
 </div>
 
- <div class="container my-4">
-  <div class="row">
-    <!-- SISI KIRI: VIDEO UTAMA -->
-    <div class="col-md-9 d-flex justify-content-center">
-      <div class="ratio ratio-16x9 rounded-4" style="overflow: hidden;">
-        <iframe 
-          src="https://www.youtube.com/embed/DB9n7aNM6q0?si=J53nh7e63ubRJCjb&amp;autoplay=1&amp;mute=1"
-          title="Video Utama"
-          allowfullscreen>
-        </iframe>
-      </div>
+ @php
+if (!function_exists('extractYouTubeId')) {
+    function extractYouTubeId($url) {
+        preg_match(
+            '/(youtu\.be\/|youtube\.com\/(watch\?v=|embed\/|shorts\/))([^\&\?\/]+)/',
+            $url,
+            $matches
+        );
+        return $matches[3] ?? null;
+    }
+}
+@endphp
+
+<div class="container" style="max-width: 1000px;">
+  <div class="row g-3 my-3">
+    <!-- Main video -->
+    <div class="col-lg-8">
+      @if($mainVideo)
+        @php $mainId = extractYouTubeId($mainVideo->youtube_link); @endphp
+        <div class="main-video-wrapper rounded-4 overflow-hidden shadow-sm">
+          <iframe 
+            src="https://www.youtube.com/embed/{{ $mainId }}?autoplay=1&mute=1"
+            title="{{ $mainVideo->title ?? 'Video Utama' }}"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+      @else
+        <div class="bg-secondary rounded-4 main-video-wrapper d-flex align-items-center justify-content-center">
+          <p class="text-white">Video utama tidak dapat ditemukan.</p>
+        </div>
+      @endif
     </div>
 
-    <!-- SISI KANAN: 3 VIDEO KECIL -->
-    <div class="col-md-3 d-flex flex-column justify-content-between">
-      <div class="ratio ratio-16x9 rounded-4" style="overflow: hidden;">
-        <iframe 
-          src="https://www.youtube.com/embed/5ihH4WExkEU?si=e6w555guscGBBwye"
-          title="Video Kecil 1"
-          allowfullscreen>
-        </iframe>
-      </div>
-
-      <div class="ratio ratio-16x9 rounded-4" style="overflow: hidden;">
-        <iframe 
-          src="https://www.youtube.com/embed/EJe6h7xJxJM?si=etyUe8XRl_naUCWJ"
-          title="Video Kecil 2"
-          allowfullscreen>
-        </iframe>
-      </div>
-
-      <div class="ratio ratio-16x9 rounded-4" style="overflow: hidden;">
-        <iframe 
-          src="https://www.youtube.com/embed/96ZPwmtjpJQ?si=I7Bya6wa8XQTLLqb"
-          title="Video Kecil 3"
-          allowfullscreen>
-        </iframe>
+    <!-- Sidebar videos -->
+    <div class="col-lg-4">
+      <div class="d-flex flex-column gap-3">
+        @foreach($otherVideos as $video)
+          @php $id = extractYouTubeId($video->youtube_link); @endphp
+          <div class="small-video-wrapper rounded-3 overflow-hidden shadow-sm">
+            <iframe 
+              src="https://www.youtube.com/embed/{{ $id }}?modestbranding=1"
+              title="{{ $video->title ?? 'Video' }}"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+        @endforeach
       </div>
     </div>
   </div>
 </div>
+
+<style>
+  /* Main video container */
+  .main-video-wrapper {
+    display: block;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    position: relative;
+    height: 0;
+  }
+
+  .main-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Small video containers */
+  .small-video-wrapper {
+    display: block;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    position: relative;
+    height: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .small-video-wrapper:hover {
+    transform: scale(1.02);
+  }
+
+  .small-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Make main video stretch to match sidebar height */
+  .row {
+    align-items: stretch;
+  }
+
+  .col-lg-8 > .main-video-wrapper {
+    height: 100%;
+    padding-bottom: 0;
+  }
+
+  .col-lg-8 > .main-video-wrapper iframe {
+    position: static;
+  }
+
+  /* Ensure proper alignment on all screens */
+  @media (max-width: 991px) {
+    .main-video-wrapper,
+    .small-video-wrapper {
+      padding-bottom: 56.25%;
+    }
+
+    .col-lg-8 > .main-video-wrapper {
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .col-lg-8 > .main-video-wrapper iframe {
+      position: absolute;
+    }
+  }
+</style>
 
 <!-- TEKS -->
 <div class="content" style="display: flex; justify-content: center; padding: 80px 20px;">
