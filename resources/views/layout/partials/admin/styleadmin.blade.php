@@ -15,11 +15,12 @@
 
   <link href="summernote-bs5.css" rel="stylesheet">
   <script src="summernote-bs5.js"></script> -->
-  
+
 
 
 
 <style>
+
 .brand-text
 {
     color:white !important;
@@ -27,21 +28,33 @@
 }
 
 .main-sidebar{
-background: #FF485E;
+background: #FF485E!important;
 }
 
 .sidebar .nav-link.active
 {
-    background: rgb(255, 255, 255);
-    color: rgb(232, 76, 76);
+    background: rgb(255, 255, 255)!important;
+    color: #e84c4c!important;
 }
 
 .sidebar .nav-link.active:hover
 {
   background: rgb(172, 51, 51) !important;
-  color: white;
+  color: white!important;
   transition: 0.3s;
 }
+
+.headtb
+{
+ text-align: center
+}
+
+.bodytb
+{
+  text-align: center;
+}
+
+
 
 
 

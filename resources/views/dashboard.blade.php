@@ -49,7 +49,7 @@ if (!function_exists('extractYouTubeId')) {
         @if($mainVideo)
           @php $mainId = extractYouTubeId($mainVideo->youtube_link); @endphp
           <div class="main-video-wrapper rounded-4 overflow-hidden shadow-sm">
-            <iframe 
+            <iframe
               src="https://www.youtube.com/embed/{{ $mainId }}?autoplay=1&mute=1"
               title="{{ $mainVideo->title ?? 'Video Utama' }}"
               allowfullscreen
@@ -62,14 +62,14 @@ if (!function_exists('extractYouTubeId')) {
           </div>
         @endif
       </div>
-    
+
       <!-- Sidebar videos -->
       <div class="col-lg-4">
         <div class="d-flex flex-column gap-3">
           @foreach($otherVideos as $video)
             @php $id = extractYouTubeId($video->youtube_link); @endphp
             <div class="small-video-wrapper rounded-3 overflow-hidden shadow-sm">
-              <iframe 
+              <iframe
                 src="https://www.youtube.com/embed/{{ $id }}?modestbranding=1"
                 title="{{ $video->title ?? 'Video' }}"
                 allowfullscreen
@@ -82,8 +82,6 @@ if (!function_exists('extractYouTubeId')) {
     </div>
   </div>
 </div>
-
-
 
 
 <style>
@@ -168,8 +166,176 @@ if (!function_exists('extractYouTubeId')) {
   </div>
 </div>
 
+
+{{-- Tabel Data --}}
+   <div class="row">
+          <div class="col-12 col-sm-7 mt-4" id="tabeldata">
+            <div class="card card-danger card-tabs  h-100">
+              <div class="card-header p-0 pt-1">
+                <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="custom-tabs-one-provinsi-tab" data-toggle="pill" href="#custom-tabs-one-provinsi" role="tab" aria-controls="custom-tabs-one-provinsi" aria-selected="true">Provinsi</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-jenis" role="tab" aria-controls="custom-tabs-one-home" aria-selected="false">Jenis Kelamin</a>
+                    </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-usia" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Usia</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-jenjang" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Jenjang</a>
+                  </li>
+                   <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-ekonomi" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Ekonomi</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content" id="custom-tabs-one-tabContent">
+                  <div class="tab-pane fade show active" id="custom-tabs-one-provinsi" role="tabpanel" aria-labelledby="custom-tabs-one-provinsi-tab">
+
+                   <table class="table table-striped">
+                         <thead class="table-dark">
+                            <tr>
+                                <th>Tahun</th>
+                                <th>Nama</th>
+                                <th>Desimal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($provinsi as $p)
+                                <tr class="bodytb">
+                                    <td>{{ $p->tahun }}</td>
+                                    <td>{{ $p->nama }}</td>
+                                    <td>{{ $p->desimal }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="3" class="text-center text-muted">Belum ada data</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                  </div>
+
+
+                  <div class="tab-pane fade" id="custom-tabs-one-jenis" role="tabpanel" aria-labelledby="custom-tabs-one-jenis-tab">
+
+                       <table class="table table-hover">
+                        <thead class="table-dark">
+                            <tr class="headtb">
+                                <th>Tahun</th>
+                                <th>Laki-Laki</th>
+                                <th>Perempuan</th>
+                                <th>Nasional</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($gender as $g)
+                                <tr class="bodytb">
+                                    <td>{{ $g->tahun }}</td>
+                                    <td>{{ $g->laki }}</td>
+                                    <td>{{ $g->perempuan }}</td>
+                                    <td>{{ $g->nasional }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted">Belum ada data</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                  </div>
+
+                  <div class="tab-pane fade" id="custom-tabs-one-usia" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
+
+                    <table class="table table-hover">
+                        <thead class="table-dark">
+                            <tr class="headtb">
+                                <th>Tahun</th>
+                                <th>Usia</th>
+                                <th>Presentase</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($usia as $u)
+                                <tr class="bodytb">
+                                    <td>{{ $u->tahun }}</td>
+                                    <td>{{ $u->umur}}</td>
+                                    <td>{{ $u->presentase }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted">Belum ada data</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                  </div>
+
+                  <div class="tab-pane fade" id="custom-tabs-one-jenjang" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+
+                    <table class="table table-hover">
+                        <thead class="table-dark">
+                            <tr class="headtb">
+                                <th>Tahun</th>
+                                <th>Pendidikan</th>
+                                <th>Presentase</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($jenjang as $j)
+                                <tr class="bodytb">
+                                    <td>{{ $j->tahun }}</td>
+                                    <td>{{ $j->sekolah }}</td>
+                                    <td>{{ $j->presentase }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted">Belum ada data</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                  </div>
+
+                   <div class="tab-pane fade" id="custom-tabs-one-ekonomi" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+                     <table class="table table-hover">
+                        <thead class="table-dark">
+                            <tr class="headtb">
+                                <th>Tahun</th>
+                                <th>Kelas Ekonomi</th>
+                                 <th>Jumlah Orang</th>
+                                <th>Presentase</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @forelse ($ekonomi as $e)
+
+                                <tr class="bodytb">
+                                    <td>{{ $e->tahun }}</td>
+                                    <td>{{ $e->kelas }}</td>
+                                    <td>{{ $e->orang }}</td>
+                                    <td>{{ $e->presentase }}</td>
+                                </tr>
+
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted">Belum ada data</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card -->
+            </div>
+          </div>
+
   {{-- KALKULATOR SECTION --}}
-  <div class="content" id="Kalkulator">
+  <div class="content" id="Kalkulator" name="Kalkulator">
     <div class="container">
       <div class="container-fluid">
         <div class="row">
@@ -181,7 +347,7 @@ if (!function_exists('extractYouTubeId')) {
           <div class="col-sm-6 mt-4">
             <div class="card p-3 h-100">
               <div class="card-body">
-                <form action="{{ route('calculate') }}" method="POST">
+                <form action="{{ route('calculate') }}" method="POST" id="KalkulatorForm">
                   @csrf
                   <p style="font-family: poppins; font-size: 22px; color: #FF475A">Jumlah bungkus rokok per hari</p>
                   <div class="mb-3">
