@@ -4,10 +4,10 @@
 
 @section('content')
 
-<div class="content-wrapper p-4">
+<div class="content-wrapper mt-3">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="m-0 font-weight-bold">Kelola Video</h1>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Kelola Video</h2>
 
         <a href="{{ route('videos.create') }}" class="btn btn-primary">
             + Tambah Video Baru
@@ -34,8 +34,8 @@
 
                             {{-- Thumbnail --}}
                             <td style="width: 200px;">
-                                <iframe 
-                                    width="200" 
+                                <iframe
+                                    width="200"
                                     height="120"
                                     src="https://www.youtube.com/embed/{{ $video->youtube_id }}"
                                     frameborder="0"
@@ -54,8 +54,8 @@
                                     Edit
                                 </a>
 
-                                <form action="{{ route('videos.destroy', $video->id) }}" 
-                                      method="POST" 
+                                <form action="{{ route('videos.destroy', $video->id) }}"
+                                      method="POST"
                                       style="display:inline;">
                                     @csrf
                                     @method('DELETE')

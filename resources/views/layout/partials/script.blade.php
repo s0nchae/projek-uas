@@ -1,7 +1,6 @@
 <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 function allowDrop(ev) {
@@ -43,5 +42,38 @@ function submitTierList() {
 
   document.getElementById('tierForm').submit();
 }
+
+window.addEventListener("beforeunload", function () {
+    localStorage.setItem("scrollPosition", window.scrollY);
+});
+
+// === KEMBALIKAN POSISI SCROLL SAAT HALAMAN SELESAI DILOAD ===
+window.addEventListener("load", function () {
+    const savedPosition = localStorage.getItem("scrollPosition");
+    
+    if (savedPosition !== null) {
+        window.scrollTo(0, parseInt(savedPosition));
+    }
+});
+
+// Untuk AdminLTE: kita scroll pada elemen .content-wrapper
+const wrapper = document.querySelector('.content-wrapper');
+
+// Pastikan elemen ada
+if (wrapper) {
+    // Simpan posisi scroll
+    wrapper.addEventListener('scroll', function () {
+        sessionStorage.setItem('wrapperScroll', wrapper.scrollTop);
+    });
+
+    // Pulihkan scroll secepat mungkin
+    document.addEventListener('DOMContentLoaded', function () {
+        const pos = sessionStorage.getItem('wrapperScroll');
+        if (pos !== null) {
+            wrapper.scrollTop = parseInt(pos);
+        }
+    });
+}
+
 
 </script>

@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Kalkulator;
 use App\Models\TierList;
 use App\Models\video;
+use App\Models\Gender;
+use App\Models\Usia;
+use App\Models\Jenjang;
+use App\Models\Ekonomi;
+use App\Models\Provinsi;
 use Illuminate\Http\Request;
 
 class KalkulatorController extends Controller
@@ -22,6 +27,11 @@ class KalkulatorController extends Controller
         // ======== FIX VIDEO ========
         $mainVideo = Video::first();
         $otherVideos = Video::skip(1)->take(10)->get();
+        $gender = Gender::all();
+        $usia = Usia::all();
+        $jenjang = Jenjang::all();
+        $ekonomi = Ekonomi::all();
+        $provinsi = Provinsi::all();
         // ============================
 
         $countsMerokok = [];
@@ -35,7 +45,7 @@ class KalkulatorController extends Controller
         }
         arsort($countsMerokok);
         $topS = key($countsMerokok);
-        
+
         $countsDampak = [];
         foreach ($all as $item) {
             $data = json_decode($item->tier_dampak, true);
@@ -48,7 +58,7 @@ class KalkulatorController extends Controller
         arsort($countsDampak);
         $topDampak = key($countsDampak);
 
-        return view('dashboard', compact('kalkulators', 'totalUang', 'topS', 'topDampak', 'mainVideo', 'otherVideos'));
+        return view('dashboard', compact('kalkulators', 'totalUang', 'topS', 'topDampak', 'mainVideo', 'otherVideos', 'gender','usia','jenjang','ekonomi','provinsi'));
     }
 
     public function calculate(Request $request)
@@ -77,7 +87,7 @@ class KalkulatorController extends Controller
         ]);
 
         // FIXED: Proper syntax
-        return redirect(route('dashboard') . '#Kalkulator')->with([
+        return redirect()->route('dashboard')->with([
             'success' => 'Kalkulasi berhasil!',
             'calculation_result' => [
                 'total_per_hari' => $total_per_hari,
@@ -93,6 +103,6 @@ class KalkulatorController extends Controller
         $kalkulator->delete();
 
         // FIXED: Proper syntax
-        return redirect(route('dashboard') . '#Kalkulator')->with('success', 'Riwayat berhasil dihapus!');
+        return redirect()->route('dashboard')->with('success', 'Riwayat berhasil dihapus!');
     }
 }
