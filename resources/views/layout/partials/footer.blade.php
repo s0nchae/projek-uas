@@ -11,7 +11,7 @@
   <div class="container" style="width: 100%; max-width: 150vh">
     <div class="row" style="color: #FFFFFF; font-family: poppins">
       <div class="col-sm-12 mt-5 mb-3">
-        <h2>Lorem<strong>Ipsum</strong></h2>
+        <h2>Nafas<strong>Baru</strong></h2>
       </div>
       <div class="col-sm-6 mb-3">
         <h5>Description</h5>

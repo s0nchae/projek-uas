@@ -1,9 +1,10 @@
 @include('layout.partials.style')
 
+<title>NafasBaru  | App Edukasi Rokok</title>
 <body class="hold-transition login-page" style="background-image: linear-gradient(#FF475A, #FFA477)">
 <div class="login-box">
   <div class="login-logo">
-    <a style="font-family: poppins; text-decoration: none; color: white" href="../../index2.html"><strong>Lorem</strong>Ipsum</a>
+    <a style="font-family: poppins; text-decoration: none; color: white" href="../../index2.html"><strong>Nafas</strong>Baru</a>
   </div>
   <!-- /.login-logo -->
   <div class="card" style="border-radius: 20px;">

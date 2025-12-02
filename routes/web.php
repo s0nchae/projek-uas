@@ -109,8 +109,8 @@ Route::delete('/videos/{video}', [VideoController::class, 'destroy'])->name('vid
     Route::get('/dashboard', function () {
     $videos = Video::all();
 
-    $mainVideo = $videos->first(); // first video as main
-    $otherVideos = $videos->skip(1)->take(3); // next 3 videos
+    $mainVideo = $videos->first(); 
+    $otherVideos = $videos->skip(1)->take(3); 
 
     return view('dashboard', compact('mainVideo', 'otherVideos'));
 });

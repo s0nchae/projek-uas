@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-light elevation-4 p-2" style="font-family: poppins">
     <a href="#" class="brand-link" style="text-decoration: none; text-align: center">
-      <span class="brand-text font-weight-bold">LoremIpsum</span>
+      <span class="brand-text font-weight-bold">NafasBaru</span>
     </a>
 
     <div class="sidebar">
