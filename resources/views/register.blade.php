@@ -3,7 +3,7 @@
 <body class="hold-transition login-page" style="background-image: linear-gradient(#1E3A8A, #10214fff)">
 <div class="login-box">
   <div class="login-logo">
-    <a style="font-family: poppins; text-decoration: none; color: white" href="../../index2.html"><strong>Lorem</strong>Ipsum</a>
+    <a style="font-family: poppins; text-decoration: none; color: white" href="../../index2.html"><strong>Nafas</strong>Baru</a>
   </div>
   <!-- /.login-logo -->
   <div class="card" style="border-radius: 20px;">

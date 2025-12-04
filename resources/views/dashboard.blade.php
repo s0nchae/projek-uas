@@ -12,10 +12,12 @@
             <p style="font-family: poppins; font-size: 18px; color: rgba(255, 255, 255, 0.87)"> Website ini membantu kamu memahami bahaya rokok serta menghitung berapa banyak uang yang sebenarnya bisa kamu hemat jika berhenti merokok. </p>
             <br>
             <!-- TOMBOL -->
-            <a href="#Kalkulator"
-              class="btn text-white mr-3"
-              style="background-color: none; border: 2px solid white; border-radius: 20px; font-family: Poppins; font-size: 20px; padding: 15px 30px; max-width: 300px">
-              Mulai&nbsp;hitung&nbsp;sekarang!
+            <a href="javascript:void(0)"
+   onclick="document.getElementById('Kalkulator').scrollIntoView({behavior: 'smooth'})"
+   class="btn text-white mr-3"
+   style="background-color: none; border: 2px solid white; border-radius: 20px; font-family: Poppins; font-size: 20px; padding: 15px 30px; max-width: 300px">
+   Mulai&nbsp;hitung&nbsp;sekarang!
+</a>
             </a>
           </div>
           <!-- GAMBAR ROKOK -->
@@ -577,7 +579,7 @@ if (!function_exists('extractYouTubeId')) {
           </div>
         </div>
 
-        <div class="text-center mt-4">
+        <div class="text-center mt-4 mb-4">
         <form id="tierForm" action="{{ route('tierlist.store') }}" method="POST">
             @csrf
             <input type="hidden" name="tier_merokok" id="tier_merokok">
@@ -598,4 +600,14 @@ if (!function_exists('extractYouTubeId')) {
       </div>
     </div>
   </div>
+  @if(session('calculation_result'))
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('Kalkulator').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+});
+</script>
+@endif
 @endsection

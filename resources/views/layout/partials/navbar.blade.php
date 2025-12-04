@@ -2,7 +2,7 @@
 <nav class="navbar" style="background-image: linear-gradient(to bottom, #a42c38ff, #9c2934ff);">
   <div class="container d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3s" style="justify-content: space-between">
     <h1 style="font-family: poppins; color: #ffffffff; cursor: pointer">
-      Lorem<strong>Ipsum</strong>
+      Nafas<strong>Baru</strong>
     </h1>
     
     <div class="navbar-center" style="justify-content: center; align-items: center">
