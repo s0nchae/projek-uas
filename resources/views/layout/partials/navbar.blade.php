@@ -5,7 +5,7 @@
       Nafas<strong>Baru</strong>
     </h1>
     
-    <div class="navbar-center" style="justify-content: center; align-items: center">
+    <div class="navbar-center" style="margin-left: auto;">
       <ul style="list-style: none; display: flex; padding: 0px; margin: 0px; font-size: 18px; gap: 2rem">
         <a href="/" style="text-decoration: none"><li class="p-2" style="font-family: poppins; cursor: pointer; color: #ffffffff" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" >Beranda</li></a>
         <a href="/#Kalkulator" style="text-decoration: none"><li class="p-2" style="font-family: poppins; cursor: pointer; color: #ffffffff" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" >Kalkulator</li></a>
@@ -13,20 +13,5 @@
         <a href="/edukasi" style="text-decoration: none"><li class="p-2" style="font-family: poppins; cursor: pointer; color: #ffffffff" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';">Edukasi</li></a>
       </ul>
     </div>
-
-    <div class="navbar-right">
-      <a class="btn text-white mr-3"
-        style="background-color: #FF475A; border-radius: 15px; font-family: Poppins; font-size: 16px; padding: 10px 22px; cursor: pointer"
-        href="/login">
-        Login&nbsp;now
-      </a>
-  
-      <a class="btn text-white"
-        style="background-color: #FF475A; border-radius: 15px; font-family: Poppins; font-size: 16px; padding: 10px 22px; cursor: pointer"
-        href="/admin/artikel">
-        Admin&nbsp;Page
-      </a>
-    </div>
-
   </div>
 </nav>
