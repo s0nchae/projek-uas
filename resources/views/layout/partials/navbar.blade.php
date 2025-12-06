@@ -9,7 +9,7 @@
       <ul style="list-style: none; display: flex; padding: 0px; margin: 0px; font-size: 18px; gap: 2rem">
         <a href="/" style="text-decoration: none"><li class="p-2" style="font-family: poppins; cursor: pointer; color: #ffffffff" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" >Beranda</li></a>
         <a href="/#Kalkulator" style="text-decoration: none"><li class="p-2" style="font-family: poppins; cursor: pointer; color: #ffffffff" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" >Kalkulator</li></a>
-        <a href="/" style="text-decoration: none"><li class="p-2" style="font-family: poppins; cursor: pointer; color: #ffffffff" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" >Tier List</li></a>
+        <a href="/#TierList" style="text-decoration: none"><li class="p-2" style="font-family: poppins; cursor: pointer; color: #ffffffff" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" >Tier List</li></a>
         <a href="/edukasi" style="text-decoration: none"><li class="p-2" style="font-family: poppins; cursor: pointer; color: #ffffffff" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';">Edukasi</li></a>
       </ul>
     </div>

@@ -24,9 +24,16 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{ route('edukasi.index') }}">Semua Artikel</a></li>
+
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ route('edukasi.category', 'the-hidden-truth') }}">The Hidden Truth</a></li>
-                        <li><a class="dropdown-item" href="{{ route('edukasi.category', 'the-unpopular-facts') }}">The Unpopular Facts</a></li>
+
+                        @foreach ($categories as $cat)
+                            <li>
+                                <a class="dropdown-item" href="{{ route('edukasi.category', Str::slug($cat->kategori)) }}">
+                                    {{ $cat->kategori }}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </li>
             </div>
@@ -35,7 +42,6 @@
             {{-- Menggunakan variabel $articles yang dilewatkan dari Controller --}}
             @foreach ($latestArticles as $article)
                 <div class="col-md-4 mb-4">
-                    {{-- Ulangi struktur card artikel yang sama --}}
                     <div class="card">
                         <a href="{{ route('edukasi.show', $article->slug) }}" style="text-decoration: none; color: black;">
                             <img src="{{ asset($article->thumbnail_path) }}" class="card-img-top" style="height: 180px; object-fit: cover;" alt="{{ $article->judul }}">

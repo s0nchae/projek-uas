@@ -6,7 +6,7 @@
     <section class="content">
         <div class="container-fluid">
 
-            <h2 class="mb-4">Tambah Artikel Baru</h2>
+            <h2 class="mb-4">Tambah Data Jenjang</h2>
 
             {{-- Tampilkan error --}}
             @if ($errors->any())

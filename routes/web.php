@@ -49,40 +49,60 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/artikel', fn() => redirect()->route('admin.artikel.index'))->name('index');
     Route::resource('artikel', AdminArticleController::class);
 
+    /* ==========================
+       JENJANG
+    =========================== */
     Route::get('/jenjang', [JenjangController::class, 'show'])->name('jenjang.index');
-    Route::get('/create/jenjang', [JenjangController::class, 'create'])->name('jenjang.create');
-    Route::get('/store/jenjang', [JenjangController::class, 'store'])->name('jenjang.store');
-    Route::post('/jenjang/{id}/edit', [JenjangController::class, 'update'])->name('jenjang.edit');
+    Route::get('/jenjang/create', [JenjangController::class, 'create'])->name('jenjang.create');
+    Route::post('/jenjang', [JenjangController::class, 'store'])->name('jenjang.store');
+    Route::get('/jenjang/{id}/edit', [JenjangController::class, 'edit'])->name('jenjang.edit');
+    Route::put('/jenjang/{id}', [JenjangController::class, 'update'])->name('jenjang.update');
     Route::delete('/jenjang/{id}', [JenjangController::class, 'destroy'])->name('jenjang.destroy');
 
+    /* ==========================
+       EKONOMI
+    =========================== */
     Route::get('/ekonomi', [EkonomiController::class, 'show'])->name('ekonomi.index');
-    Route::get('/create/ekonomi', [EkonomiController::class, 'create'])->name('ekonomi.create');
-    Route::get('/store/ekonomi', [EkonomiController::class, 'store'])->name('ekonomi.store');
-    Route::post('/ekonomi/{id}/edit', [EkonomiController::class, 'update'])->name('ekonomi.edit');
+    Route::get('/ekonomi/create', [EkonomiController::class, 'create'])->name('ekonomi.create');
+    Route::post('/ekonomi', [EkonomiController::class, 'store'])->name('ekonomi.store');
+    Route::get('/ekonomi/{id}/edit', [EkonomiController::class, 'edit'])->name('ekonomi.edit');
+    Route::put('/ekonomi/{id}', [EkonomiController::class, 'update'])->name('ekonomi.update');
     Route::delete('/ekonomi/{id}', [EkonomiController::class, 'destroy'])->name('ekonomi.destroy');
 
+    /* ==========================
+       USIA
+    =========================== */
     Route::get('/usia', [UsiaController::class, 'show'])->name('usia.index');
-    Route::get('/create/usia', [UsiaController::class, 'create'])->name('usia.create');
-    Route::get('/store/usia', [UsiaController::class, 'store'])->name('usia.store');
-    Route::post('/usia/{id}/edit', [UsiaController::class, 'update'])->name('usia.edit');
+    Route::get('/usia/create', [UsiaController::class, 'create'])->name('usia.create');
+    Route::post('/usia', [UsiaController::class, 'store'])->name('usia.store');
+    Route::get('/usia/{id}/edit', [UsiaController::class, 'edit'])->name('usia.edit');
+    Route::put('/usia/{id}', [UsiaController::class, 'update'])->name('usia.update');
     Route::delete('/usia/{id}', [UsiaController::class, 'destroy'])->name('usia.destroy');
 
+    /* ==========================
+       GENDER
+    =========================== */
     Route::get('/gender', [GenderController::class, 'show'])->name('gender.index');
-    Route::get('/create/gender', [GenderController::class, 'create'])->name('gender.create');
-    Route::get('/store/gender', [GenderController::class, 'store'])->name('gender.store');
-    Route::post('/gender/{id}/edit', [GenderController::class, 'update'])->name('gender.edit');
+    Route::get('/gender/create', [GenderController::class, 'create'])->name('gender.create');
+    Route::post('/gender', [GenderController::class, 'store'])->name('gender.store');
+    Route::get('/gender/{id}/edit', [GenderController::class, 'edit'])->name('gender.edit');
+    Route::put('/gender/{id}', [GenderController::class, 'update'])->name('gender.update');
     Route::delete('/gender/{id}', [GenderController::class, 'destroy'])->name('gender.destroy');
 
+    /* ==========================
+       PROVINSI
+    =========================== */
     Route::get('/provinsi', [ProvinsiController::class, 'show'])->name('provinsi.index');
-    Route::get('/create/provinsi', [ProvinsiController::class, 'create'])->name('provinsi.create');
-    Route::get('/store/provinsi', [ProvinsiController::class, 'store'])->name('provinsi.store');
-    Route::post('/provinsi/{id}/edit', [ProvinsiController::class, 'update'])->name('provinsi.edit');
+    Route::get('/provinsi/create', [ProvinsiController::class, 'create'])->name('provinsi.create');
+    Route::post('/provinsi', [ProvinsiController::class, 'store'])->name('provinsi.store');
+    Route::get('/provinsi/{id}/edit', [ProvinsiController::class, 'edit'])->name('provinsi.edit');
+    Route::put('/provinsi/{id}', [ProvinsiController::class, 'update'])->name('provinsi.update');
     Route::delete('/provinsi/{id}', [ProvinsiController::class, 'destroy'])->name('provinsi.destroy');
 
-
-    // route untuk Ajax kategori
+    /* AJAX Category */
     Route::post('category/store', [CategoryController::class, 'store'])->name('category.store');
 });
+
 
 
 

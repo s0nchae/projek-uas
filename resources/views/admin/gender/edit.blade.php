@@ -6,7 +6,7 @@
     <section class="content">
         <div class="container-fluid">
 
-            <h2 class="mb-4">Edit Artikel</h2>
+            <h2 class="mb-4">Edit Data Gender</h2>
 
             {{-- Error --}}
             @if ($errors->any())
@@ -46,11 +46,6 @@
                                    value="{{ old('perempuan', $gender->perempuan) }}" required>
                         </div>
 
-                         <div class="mb-3">
-                            <label class="form-label">Nasional</label>
-                            <input type="text" name="nasional" class="form-control"
-                                   value="{{ old('tahun', $gender->nasional) }}" required>
-                        </div>
 
                         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                         <a href="{{ route('admin.gender.index') }}" class="btn btn-secondary">Kembali</a>
