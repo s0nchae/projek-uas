@@ -10,7 +10,7 @@
 
     <div class="card p-4">
 
-        <form action="{{ route('videos.update', $video->id) }}" method="POST">
+        <form action="{{ route('admin.videos.update', $video->id) }}" method="POST">
             @csrf
             @method('PUT')
 

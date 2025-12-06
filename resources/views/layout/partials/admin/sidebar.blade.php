@@ -26,6 +26,8 @@
         </ul>
       </nav>
 
+      <hr style="color: white;">
+
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column">
           <li class="nav-item">
@@ -80,6 +82,19 @@
           </li>
         </ul>
       </nav>
-      
+
+      <hr style="color: white;">
+
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column">
+          <li class="nav-item">
+            <a href="{{route('admin.users.roles')}}" class="nav-link active">
+              <i class="nav-icon fas fa-user"></i>
+              <p>Roles</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
     </div>
-</aside>
+  </aside>

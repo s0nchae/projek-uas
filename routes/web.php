@@ -139,5 +139,13 @@ Route::middleware([AdminOnly::class])->prefix('admin')->name('admin.')->group(fu
     Route::get('/videos/{video}/edit', [VideoController::class, 'edit'])->name('videos.edit');
     Route::put('/videos/{video}', [VideoController::class, 'update'])->name('videos.update');
     Route::delete('/videos/{video}', [VideoController::class, 'destroy'])->name('videos.destroy');
+    
+    /* ----------------------------
+       USER ROLES
+    ----------------------------- */
+    // Halaman manajemen role user
+    Route::get('/users/roles', [AdminController::class, 'showUserRoles'])->name('users.roles');
 
+    // Update role satu user
+    Route::post('/users/roles/{id}', [AdminController::class, 'updateUserRole'])->name('users.roles.update');
 });
