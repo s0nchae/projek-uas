@@ -2,7 +2,7 @@
 @section('content')
 @include('layout.partials.admin.styleadmin')
 
-<div class="content-wrapper mt-3">
+<div class="content-wrapper pt-3">
     <section class="content">
         <div class="container-fluid">
 

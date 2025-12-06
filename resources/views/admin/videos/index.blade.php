@@ -4,12 +4,12 @@
 
 @section('content')
 
-<div class="content-wrapper mt-3">
+<div class="content-wrapper pt-3">
 
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Kelola Video</h2>
 
-        <a href="{{ route('videos.create') }}" class="btn btn-primary">
+        <a href="{{ route('admin.videos.create') }}" class="btn btn-primary">
             + Tambah Video Baru
         </a>
     </div>
@@ -50,11 +50,11 @@
                             </td>
 
                             <td>
-                                <a href="{{ route('videos.edit', $video->id) }}" class="btn btn-warning btn-sm">
+                                <a href="{{ route('admin.videos.edit', $video->id) }}" class="btn btn-warning btn-sm">
                                     Edit
                                 </a>
 
-                                <form action="{{ route('videos.destroy', $video->id) }}"
+                                <form action="{{ route('admin.videos.destroy', $video->id) }}"
                                       method="POST"
                                       style="display:inline;">
                                     @csrf
