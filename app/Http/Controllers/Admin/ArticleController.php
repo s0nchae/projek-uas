@@ -24,7 +24,7 @@ class ArticleController extends Controller
     // -------------------------------
     public function create()
     {
-        $categories = Category::all(); // ambil semua kategori
+        $categories = Category::all();
         return view('admin.artikel.create', compact('categories'));
     }
 
@@ -34,29 +34,32 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul' => 'required',
-            'deskripsi_singkat' => 'required',
-            'konten' => 'required',
-            'kategori' => 'required',
-            'author' => 'required',
-            'thumbnail' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+            'judul'              => 'required',
+            'deskripsi_singkat'  => 'required',
+            'konten'             => 'required',
+            'kategori'           => 'required',
+
+            // validasi alfabet doang 
+            'author'             => ['required', 'regex:/^[a-zA-Z\s]+$/'],
+
+            'thumbnail'          => 'required|image|mimes:jpg,png,jpeg|max:2048',
         ]);
 
-        // upload thumbnail ke /public/uploads/artikel/
+        // upload thumbnail
         $file = $request->file('thumbnail');
         $filename = time() . '-' . $file->getClientOriginalName();
         $directory = 'uploads/artikel/';
         $file->move(public_path($directory), $filename);
 
         Article::create([
-            'judul' => $request->judul,
-            'slug' => Str::slug($request->judul),
-            'deskripsi_singkat' => $request->deskripsi_singkat,
-            'konten' => $request->konten,
-            'author' => $request->author,
-            'kategori' => $request->kategori,
-            'thumbnail_path' => $directory . $filename,
-            'is_published' => $request->is_published ? 1 : 0,
+            'judul'            => $request->judul,
+            'slug'             => Str::slug($request->judul),
+            'deskripsi_singkat'=> $request->deskripsi_singkat,
+            'konten'           => $request->konten,
+            'author'           => $request->author,
+            'kategori'         => $request->kategori,
+            'thumbnail_path'   => $directory . $filename,
+            'is_published'     => $request->is_published ? 1 : 0,
         ]);
 
         return redirect()->route('admin.artikel.index')->with('success', 'Artikel berhasil dibuat!');
@@ -89,13 +92,16 @@ class ArticleController extends Controller
         $artikel = Article::findOrFail($id);
 
         $request->validate([
-            'judul' => 'required',
+            'judul'             => 'required',
             'deskripsi_singkat' => 'required',
-            'konten' => 'required',
-            'kategori' => 'required',
-            'author' => 'required',
-            'thumbnail' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-            'is_published' => 'required',
+            'konten'            => 'required',
+            'kategori'          => 'required',
+
+            // validasi alfabet doang 
+            'author'            => ['required', 'regex:/^[a-zA-Z\s]+$/'],
+
+            'thumbnail'         => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'is_published'      => 'required',
         ]);
 
         // Jika ada thumbnail baru, upload dan ganti yang lama
@@ -115,13 +121,13 @@ class ArticleController extends Controller
 
         // Update field lain
         $artikel->update([
-            'judul' => $request->judul,
-            'slug' => Str::slug($request->judul),
-            'deskripsi_singkat' => $request->deskripsi_singkat,
-            'konten' => $request->konten,
-            'kategori' => $request->kategori,
-            'author' => $request->author,
-            'is_published' => $request->is_published ? 1 : 0,
+            'judul'            => $request->judul,
+            'slug'             => Str::slug($request->judul),
+            'deskripsi_singkat'=> $request->deskripsi_singkat,
+            'konten'           => $request->konten,
+            'kategori'         => $request->kategori,
+            'author'           => $request->author,
+            'is_published'     => $request->is_published ? 1 : 0,
         ]);
 
         return redirect()->route('admin.artikel.index')->with('success', 'Artikel berhasil diperbarui!');
