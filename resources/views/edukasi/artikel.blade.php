@@ -7,7 +7,12 @@
 
 
 <div class="content m-5">
-    
+    <div class="container " style="width: 100%; max-width: 100vh">
+    <a href="{{ route('edukasi.index') }}" class="btn mb-3" style="font-family: poppins; cursor: pointer; color: #000000ff" onmouseover="this.style.fontWeight='bold'; this.style.textDecoration='underline';" onmouseout="this.style.fontWeight='normal'; this.style.textDecoration='none';" >
+       ← &nbsp; Kembali
+    </a>
+    </div>
+
     {{-- 1. GAMBAR UTAMA ARTIKEL (DINAMIS) --}}
     <div class="container" style="width: 100%; max-width: 100vh; height: 200px; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center">
         {{-- Menggunakan path dari database ($article->thumbnail_path) --}}
