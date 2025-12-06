@@ -30,7 +30,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column">
           <li class="nav-item">
             <a href="{{route('admin.gender.index')}}" class="nav-link active">
-              <i class="nav-icon fas fa-camera"></i>
+              <i class="nav-icon fas fa-venus"></i>
               <p>Gender</p>
             </a>
           </li>
@@ -41,7 +41,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column">
           <li class="nav-item">
             <a href="{{route('admin.provinsi.index')}}" class="nav-link active">
-              <i class="nav-icon fas fa-image"></i>
+              <i class="nav-icon fas fa-map"></i>
               <p>Provinsi</p>
             </a>
           </li>
@@ -52,7 +52,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column">
           <li class="nav-item">
             <a href="{{route('admin.usia.index')}}" class="nav-link active">
-              <i class="nav-icon fas fa-image"></i>
+              <i class="nav-icon fas fa-user"></i>
               <p>Usia</p>
             </a>
           </li>
@@ -63,7 +63,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column">
           <li class="nav-item">
             <a href="{{route('admin.ekonomi.index')}}" class="nav-link active">
-              <i class="nav-icon fas fa-image"></i>
+              <i class="nav-icon fas fa-credit-card"></i>
               <p>Ekonomi</p>
             </a>
           </li>
@@ -74,7 +74,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column">
           <li class="nav-item">
             <a href="{{route('admin.jenjang.index')}}" class="nav-link active">
-              <i class="nav-icon fas fa-image"></i>
+              <i class="nav-icon fas fa-graduation-cap"></i>
               <p>Jenjang</p>
             </a>
           </li>

@@ -6,7 +6,7 @@
     <section class="content">
         <div class="container-fluid">
 
-            <h2 class="mb-4">Tambah Artikel Baru</h2>
+            <h2 class="mb-4">Tambah Data Gender</h2>
 
             {{-- Tampilkan error --}}
             @if ($errors->any())
@@ -32,12 +32,12 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Nama Provinsi</label>
+                            <label class="form-label">Jumlah Laki-Laki</label>
                             <input type="text" name="laki" class="form-control" value="{{ old('laki') }}" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Desimal</label>
+                            <label class="form-label">Jumlah Perempuan</label>
                             <input type="text" name="perempuan" class="form-control" value="{{ old('perempuan') }}" required>
                         </div>
 

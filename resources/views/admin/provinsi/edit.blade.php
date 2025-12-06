@@ -6,7 +6,7 @@
     <section class="content">
         <div class="container-fluid">
 
-            <h2 class="mb-4">Edit Artikel</h2>
+            <h2 class="mb-4">Edit Data Provinsi</h2>
 
             {{-- Error --}}
             @if ($errors->any())

@@ -229,7 +229,6 @@ if (!function_exists('extractYouTubeId')) {
                                 <th>Tahun</th>
                                 <th>Laki-Laki</th>
                                 <th>Perempuan</th>
-                                <th>Nasional</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -238,7 +237,6 @@ if (!function_exists('extractYouTubeId')) {
                                     <td>{{ $g->tahun }}</td>
                                     <td>{{ $g->laki }}</td>
                                     <td>{{ $g->perempuan }}</td>
-                                    <td>{{ $g->nasional }}</td>
                                 </tr>
                             @empty
                                 <tr>
@@ -496,7 +494,7 @@ if (!function_exists('extractYouTubeId')) {
   </div>
 </div>
 
-<div class="content">
+<div class="content" id="TierList">
   <div class="container">
     <div class="container-fluid">
       <div class="row">

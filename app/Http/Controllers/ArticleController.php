@@ -13,13 +13,16 @@ class ArticleController extends Controller
         // Menampilkan satu artikel tunggal berdasarkan slug
         
         // Ambil artikel utama. firstOrFail() akan melempar 404 jika tidak ditemukan.
-        $article = Article::where('slug', $slug)->firstOrFail();
+        $article = Article::where('slug', $slug)
+                  ->where('is_published', 1)
+                  ->firstOrFail();
 
         // Ambil 6 artikel lain yang terkait (kecuali artikel ini)
         $relatedArticles = Article::where('id', '!=', $article->id)
-                                    ->orderBy('created_at', 'desc')
-                                    ->take(6)
-                                    ->get();
+                          ->where('is_published', 1)
+                          ->orderBy('created_at', 'desc')
+                          ->take(6)
+                          ->get();
 
         // Kirim data ke view edukasi/artikel.blade.php
         return view('edukasi.artikel', [
@@ -32,9 +35,17 @@ class ArticleController extends Controller
     public function index()
     {
         // Contoh: Ambil 10 artikel terbaru
-        $latestArticles = Article::orderBy('created_at', 'desc')->take(10)->get();
+        $latestArticles = Article::where('is_published', 1)
+                         ->orderBy('created_at', 'desc')
+                         ->take(10)
+                         ->get();
+
+        $categories = Article::where('is_published', 1)
+                         ->select('kategori')
+                         ->distinct()
+                         ->get();
         
-        return view('edukasi.index', compact('latestArticles'));
+        return view('edukasi.index', compact('latestArticles', 'categories'));
     }
 
     public function category($slug)
@@ -45,8 +56,9 @@ class ArticleController extends Controller
         
         // 2. Ambil semua artikel di kategori tersebut
         $articles = Article::where('kategori', $categoryName)
-                            ->orderBy('created_at', 'desc')
-                            ->paginate(12); // Menggunakan pagination untuk efisiensi
+                   ->where('is_published', 1)
+                   ->orderBy('created_at', 'desc')
+                   ->paginate(12);
 
         // 3. Kirim data ke view edukasi/kategori.blade.php
         return view('edukasi.kategori', [
