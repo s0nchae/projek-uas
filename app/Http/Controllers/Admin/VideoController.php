@@ -57,7 +57,7 @@ class VideoController extends Controller
         ]);
 
         return redirect()
-            ->route('videos.index')
+            ->route('admin.videos.index')
             ->with('success', 'Video berhasil ditambahkan!');
     }
 
@@ -87,7 +87,7 @@ class VideoController extends Controller
         ]);
 
         return redirect()
-            ->route('videos.index')
+            ->route('admin.videos.index')
             ->with('success', 'Video berhasil diperbarui!');
     }
 
@@ -98,7 +98,7 @@ class VideoController extends Controller
     {
         $video->delete();
         return redirect()
-            ->route('videos.index')
+            ->route('admin.videos.index')
             ->with('success', 'Video berhasil dihapus.');
     }
 }
