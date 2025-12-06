@@ -12,8 +12,15 @@
       <h4 class="header text-center" style="font-family: poppins; color: #1E3A8A"><strong>Welcome Back!</strong></h4>
       <p class="login-box-msg" style="font-family: poppins; font-size: 12px; color: gray">We missed you! Please enter your details.</p>
 
+      
+
       <form action="/login" method="POST">
         @csrf
+        @error('email')
+          <div style="color: red; font-size: 12px; margin-bottom:5px; margin-left:3px; font-family: poppins">
+              {{$message}}
+          </div>
+        @enderror
         <div class="input-group mb-3">
           <input type="text" class="form-control" name='email' id='email' style="font-family: poppins; font-size: 12px" placeholder="Email">
           <div class="input-group-append">
@@ -21,12 +28,10 @@
               <span class="fas fa-envelope"></span>
             </div>
           </div>
-          @error('email')
-            <div style="color: red; font-size: 12px; margin-top:5px; margin-left:3px">
-                {{$message}}
-            </div>
-          @enderror
+          
         </div>
+
+        
         <div class="input-group mb-3">
           <input type="password" class="form-control" name='password' id='password' style="font-family: poppins; font-size: 12px" placeholder="Password">
           <div class="input-group-append">

@@ -1,3 +1,63 @@
+<style>
+    .admin-indicator {
+        padding: 10px;
+        background: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        align-items: center;
+        font-family: poppins; 
+        font-size: 1.8vh;
+
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.5s ease;
+    }
+
+    .admin-indicator.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .admin-indicator a,
+    .admin-indicator button {
+        transition: all 0.3s ease;
+    }
+</style>
+
+@if(Auth::check() && Auth::user()->role === 'admin')
+
+    {{-- Admin indicator area --}}
+    <div id="adminIndicator" class="admin-indicator">
+        <span>Logged in as Admin: <strong>{{ Auth::user()->name }}</strong></span>
+
+        {{-- Button menuju halaman admin --}}
+        <a href="{{ route('admin.artikel.index') }}" 
+           style="padding: 4px 9px; background: #3498db; color: white; border-radius: 8px; text-decoration: none;">
+           Go to Admin Page
+        </a>
+
+        {{-- Button logout --}}
+        <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+            @csrf
+            <button type="submit" 
+                    style="padding: 4px 9px; background: #e74c3c; color: white; border-radius: 8px; border: none;">
+                Logout
+            </button>
+        </form>
+    </div>
+    <!-- {{-- Divider strip --}}
+    <div style="height: 2px; background: #3498db;"></div> -->
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+            const indicator = document.getElementById('adminIndicator');
+            setTimeout(() => {
+                indicator.classList.add('show'); // trigger animasi
+            }, 200); // delay supaya terlihat
+        });
+    </script>
+@endif
+
 <!-- Navbar -->
 <nav class="navbar" style="background-image: linear-gradient(to bottom, #a42c38ff, #9c2934ff);">
   <div class="container d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3s" style="justify-content: space-between">
@@ -15,3 +75,4 @@
     </div>
   </div>
 </nav>
+

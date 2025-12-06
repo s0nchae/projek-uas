@@ -12,20 +12,51 @@ class AuthController extends Controller
 {
     public function proseslogin(Request $request)
     {
-        $credentials = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
-        
-        if(Auth::attempt($credentials)){
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+
+            // regenerate session
             $request->session()->regenerate();
-            return redirect()-> intended('dashboard');
+
+            // CEK ROLE ADMIN
+            if (Auth::user()->role === 'admin') {
+                return redirect()->intended('/');
+            }
+
+            // kalau user biasa (kalau ada)
+            return redirect()->intended('/');
         }
+
         return back()->withErrors([
-            'email' => 'The email or password you entered is incorrect!'
+            'email' => 'Email atau password salah!'
         ])->onlyInput('email');
-        // return redirect()->route('login')->with('error', 'Email atau Password Salah');
     }
+
+    // public function proseslogin(Request $request)
+    // {
+    //     $credentials = [
+    //         'email' => $request->email,
+    //         'password' => $request->password,
+    //     ];
+        
+    //     if(Auth::attempt($credentials)){
+    //         $request->session()->regenerate();
+
+    //         if(Auth::user()->role !== 'admin'){
+    //             Auth::logout();
+    //             return back()->withErrors([
+    //                 'email' => 'You dont have an access as admin!'
+    //             ]);
+    //         }
+
+    //         return redirect()-> intended('/');
+    //     }
+    //     return back()->withErrors([
+    //         'email' => 'The email or password you entered is incorrect!'
+    //     ])->onlyInput('email');
+    //     // return redirect()->route('login')->with('error', 'Email atau Password Salah');
+    // }
 
     public function showRegister()
     {
@@ -58,6 +89,12 @@ class AuthController extends Controller
         ]);
 
         Auth::login($user);
-        return redirect('/dashboard')->with('success', 'Akun berhasil dibuat dan Anda telah masuk.');
+        return redirect('/login')->with('success', 'Akun berhasil dibuat dan Anda telah masuk.');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login')->with('success', 'You have been logged out.');
     }
 }
