@@ -24,10 +24,10 @@ class EkonomiController extends Controller
  public function store(Request $request)
  {
       $request->validate([
-        'tahun' => 'required',
-        'kelas' => 'required',
-        'orang' => 'required',
-        'presentase' => 'required'
+        'tahun' => 'required|after_or_equal:2000|max:2099|integer',
+        'kelas' => 'required|string|min:1|max:12|regex:/^[a-zA-Z1-12 ]+$/',
+        'orang' => 'required|numeric|min:0.1|max:100',
+        'presentase' => 'required|numeric|min:0.1|max:100'
     ]);
 
     Ekonomi::create([
@@ -48,10 +48,10 @@ class EkonomiController extends Controller
 
      public function update(Request $request, $id){
         $request->validate([
-        'tahun' => 'required|integer',
-        'kelas' => 'required|string',
-        'orang' => 'required|numeric',
-        'presentase' => 'required|numeric'
+        'tahun' => 'required|after_or_equal:2000|max:2099|integer',
+        'kelas' => 'required|string|min:1|max:12|regex:/^[a-zA-Z1-12 ]+$/',
+        'orang' => 'required|numeric|min:0.1|max:100',
+        'presentase' => 'required|numeric|min:0.1|max:100'
     ]);
 
       $ekonomi = Ekonomi::findOrFail($id);
@@ -63,7 +63,7 @@ class EkonomiController extends Controller
         'presentase' => $request->presentase,
     ]);
 
-    return redirect()->route('admin.ekonomi.index')->with('success', 'Provinsi berhasil diperbarui!');
+    return redirect()->route('admin.ekonomi.index')->with('success', 'Ekonomi berhasil diperbarui!');
     }
 
      public function destroy($id)

@@ -39,9 +39,9 @@ class GenderController extends Controller
     public function store(Request $request)
     {
     $request->validate([
-        'tahun' => 'required',
-        'laki' => 'required',
-        'perempuan' => 'required',
+        'tahun' => 'required |integer|digits:4|after_or_equal:2000|max:2099',
+        'laki' => 'required |numeric|min:0.1',
+        'perempuan' => 'required|numeric|min:0.1',
 
     ]);
 
@@ -57,9 +57,9 @@ class GenderController extends Controller
 
     public function update(Request $request, $id){
         $request->validate([
-        'tahun' => 'required|integer',
-        'laki' => 'required|numeric',
-        'perempuan' => 'required|numeric',
+        'tahun' => 'required|integer|integer|digits:4|after_or_equal:2000|max:2099',
+        'laki' => 'required|numeric|min:0.1|max:100',
+        'perempuan' => 'required|numeric|min:0.1|max:100',
 
     ]);
 

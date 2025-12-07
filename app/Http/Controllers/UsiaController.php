@@ -23,9 +23,9 @@ class UsiaController extends Controller
  public function store(Request $request)
  {
      $request->validate([
-        'tahun' => 'required',
-        'umur' => 'required',
-        'presentase' => 'required',
+        'tahun' => 'required|after_or_equal:2000|digits:4|max:2099',
+        'umur' => 'required|integer| max:70|min:5',
+        'presentase' => 'required|numeric|max:100|min:0.1',
     ]);
 
     Usia::create([
@@ -39,9 +39,9 @@ class UsiaController extends Controller
 
    public function update(Request $request, $id){
         $request->validate([
-        'tahun' => 'required|integer',
-        'umur' => 'required|string',
-        'presentase' => 'required|numeric',
+        'tahun' => 'required|integer|after_or_equal:2000|max:2099|digits:4',
+        'umur' => 'required|integer|min:5| max:70',
+        'presentase' => 'required|numeric|max:100|min:0.1',
     ]);
 
       $usia = Usia::findOrFail($id);

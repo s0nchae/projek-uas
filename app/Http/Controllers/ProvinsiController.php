@@ -23,9 +23,9 @@ class ProvinsiController extends Controller
  public function store(Request $request)
  {
       $request->validate([
-        'tahun' => 'required',
-        'nama' => 'required',
-        'desimal' => 'required',
+        'tahun' => 'required|integer|after_or_equal:2000|max:2099|digits:4',
+        'nama' => 'required| string|regex:/^[a-zA-Z ]+$/',
+        'desimal' => 'required|numeric|max:100|min:0.1',
     ]);
 
     Provinsi::create([
@@ -45,9 +45,9 @@ class ProvinsiController extends Controller
 
      public function update(Request $request, $id){
         $request->validate([
-        'tahun' => 'required|integer',
-        'nama' => 'required|string',
-        'desimal' => 'required|numeric',
+        'tahun' => 'required|integer|after_or_equal:2000|max:2099|digits:4',
+        'nama' => 'required|string|regex:/^[a-zA-Z ]+$/',
+        'desimal' => 'required|numeric|max:100|min:0.1',
     ]);
 
       $provinsi = Provinsi::findOrFail($id);

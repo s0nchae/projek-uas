@@ -198,7 +198,7 @@ if (!function_exists('extractYouTubeId')) {
 
                    <table class="table table-striped">
                          <thead class="table-dark">
-                            <tr>
+                            <tr class="headtb">
                                 <th>Tahun</th>
                                 <th>Nama</th>
                                 <th>Desimal</th>
@@ -306,7 +306,6 @@ if (!function_exists('extractYouTubeId')) {
                                 <th>Tahun</th>
                                 <th>Kelas Ekonomi</th>
                                  <th>Jumlah Orang</th>
-                                <th>Presentase</th>
                             </tr>
                         </thead>
 
@@ -317,7 +316,6 @@ if (!function_exists('extractYouTubeId')) {
                                     <td>{{ $e->tahun }}</td>
                                     <td>{{ $e->kelas }}</td>
                                     <td>{{ $e->orang }}</td>
-                                    <td>{{ $e->presentase }}</td>
                                 </tr>
 
                             @empty
