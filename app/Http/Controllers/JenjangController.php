@@ -22,9 +22,9 @@ class JenjangController extends Controller
  public function store(Request $request)
  {
       $request->validate([
-        'tahun' => 'required',
-        'sekolah' => 'required',
-        'presentase' => 'required',
+        'tahun' => 'required|integer|integer|digits:4|after_or_equal:2000|max:2099',
+        'sekolah' => 'required|string|regex:/^[a-zA-Z ]+$/',
+        'presentase' => 'required|numeric|max:100|min:0.1',
     ]);
 
     Jenjang::create([
@@ -44,9 +44,9 @@ class JenjangController extends Controller
 
      public function update(Request $request, $id){
         $request->validate([
-        'tahun' => 'required|integer',
-        'sekolah' => 'required|string',
-        'presentase' => 'required|numeric',
+        'tahun' => 'required|integer|digits:4|after_or_equal:2000|max:2099',
+        'sekolah' => 'required|string|regex:/^[a-zA-Z ]+$/',
+        'presentase' => 'required|numeric|max:100|min:0.1',
     ]);
 
       $jenjang = Jenjang::findOrFail($id);
@@ -57,7 +57,7 @@ class JenjangController extends Controller
         'presentase' => $request->presentase,
     ]);
 
-    return redirect()->route('admin.jenjang.index')->with('success', 'Provinsi berhasil diperbarui!');
+    return redirect()->route('admin.jenjang.index')->with('success', 'Jenjang berhasil diperbarui!');
     }
 
      public function destroy($id)

@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Umur</label>
+                            <label class="form-label">Usia</label>
                             <input type="text" name="umur" class="form-control" value="{{ old('umur') }}" required>
                         </div>
 
