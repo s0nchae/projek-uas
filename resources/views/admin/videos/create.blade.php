@@ -10,7 +10,7 @@
 
     <div class="card p-4">
 
-        <form action="{{ route('videos.store') }}" method="POST">
+        <form action="{{ route('admin.videos.store') }}" method="POST">
             @csrf
 
             <div class="mb-3">
